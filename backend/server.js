@@ -1,12 +1,17 @@
-// Import Dependencies
 const express = require("express");
+const app = express();
 const cors = require("cors");
+const database = require('./utils/database');
+const port = process.env.PORT
+
+
+database.connect(); // Call the connect() function in the database.js file to establish a connection to the MongoDB database
+
 
 // Import JSON files
-    // const filename = require('./nameofile.json')
+// const filename = require('./nameofile.json')
 
-// Create our app object
-const app = express();
+
 
 // MIDDLEWARE
 app.use(cors());
@@ -22,8 +27,8 @@ app.get("/", (req, res) => {
 // });
 
 
-//declare a variable for our port number
-const PORT = process.env.PORT || 4000;
+// Define your routes and middleware here
 
-// turn on the server listener
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
