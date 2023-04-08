@@ -3,13 +3,13 @@ require('dotenv').config(); // Load environment variables from .env file
 
 function connect() {
   const uri = process.env.MONGODB_URI;
-  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-      console.log('Connected to MongoDB');
-    })
-    .catch(err => {
-      console.error('Error connecting to MongoDB:', err.message);
-    });
+  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+  // Connection Events
+  mongoose.connection
+    .on("open", () => console.log("connected to the DB"))
+    .on("close", () => console.log("disconnected from the DB"))
+    .on("error", (error) => console.log(error));
 }
 
 module.exports = { connect };
