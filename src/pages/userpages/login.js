@@ -44,7 +44,7 @@ const handleSubmit = (event) => {
             onChange={handleChange}
           />
 
-          <input type="submit" value="Register" />
+          <input type="submit" value="Login" />
         </form>
 
       </section>

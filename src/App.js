@@ -2,30 +2,33 @@ import React from "react";
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 
-//bella test
+
 //IMPORT COMPONENTS
-import Header from './components/header';
-import User from './components/user';
+  import Header from './components/header';
+  import Usernav from './components/user';
 
 //IMPORT PAGES 
-import Main from './pages/main';
+  import Main from './pages/main';
 
-import Register from './pages/userpages/register';
-import Login from './pages/userpages/login';
+  import Register from './pages/userpages/register';
+  import Login from './pages/userpages/login';
+  import Wishlist from './pages/userpages/wishlist';
 
 
-import Hotels from './pages/hotels';
-import Restaurants from './pages/restaurants';
-import Attractions from './pages/attractions';
+  import Hotels from './pages/hotels';
+  import Restaurants from './pages/restaurants';
+  import Attractions from './pages/attractions';
 
 
 function App() {
+
   return (
+
     <div className="App">
       
       <br></br>
 
-      <User/>
+      <Usernav/>
       
       <br></br>
 
@@ -43,9 +46,11 @@ function App() {
         <Route path="/attractions" element={<Attractions/>}/>;
         <Route path="/hotels" element={<Hotels/>}/>;
         <Route path="/restaurants" element={<Restaurants/>}/>;
-        
+
       </Routes>
+
     </div>
+
   );
 }
 
