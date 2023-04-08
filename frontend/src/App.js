@@ -2,11 +2,14 @@ import React from "react";
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 
+
+//IMPORT COMPONENTS
 import Header from './components/header';
+
+//IMPORT PAGES 
 import Main from './pages/main';
 import Hotels from './pages/hotels';
 import Restaurants from './pages/restaurants';
-import Concerts from './pages/concerts';
 import Attractions from './pages/attractions';
 
 
