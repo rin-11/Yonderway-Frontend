@@ -22,7 +22,6 @@ function App() {
         <Route path="/attractions" element={<Attractions/>}/>;
         <Route path="/hotels" element={<Hotels/>}/>;
         <Route path="/restaurants" element={<Restaurants/>}/>;
-  
       </Routes>
     </div>
   );
