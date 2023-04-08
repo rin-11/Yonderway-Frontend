@@ -4,12 +4,20 @@ import { Link } from "react-router-dom";
 //Account: Create account and sign in 
 //Once the user creates an account: add conditional to hide sigin/create acount buttons and replace with login /log out buttons 
 
-const Account = (props) => {
+const User = (props) => {
   return (
-    <div className="nav">
+    <nav className='user'>
+
+        <Link to='/register'>
+            <div>Register</div>
+        </Link>
+
+        <Link to='/login'>
+            <div>Login</div>
+        </Link>
         
-    </div>
+    </nav>
   );
 };
 
-export default Account;
+export default User;
