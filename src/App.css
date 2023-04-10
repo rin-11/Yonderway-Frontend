@@ -1,4 +1,47 @@
 .App {
   text-align: center;
 }
+/* 
+setting top, left and right to 0 to position the nav at the top */
 
+nav {
+  position:fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 50;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usernav{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.img-main {
+  display: inline-block;
+  margin: 5px;
+}
+
+img {
+  width: 800px;
+  height: 600px;
+}
+
+.img-container {
+  position: relative;
+}

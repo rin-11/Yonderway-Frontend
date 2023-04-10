@@ -18,7 +18,6 @@ const Usernav = (props) => {
         <Link to='/wishlist'>
             <div>User Wishlist</div>
         </Link>   
-
     </nav>
   );
 };
