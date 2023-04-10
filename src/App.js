@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 //IMPORT COMPONENTS
   import Header from './components/header';
   import Usernav from './components/user';
+  import Footer from './components/footer'
 
 //IMPORT PAGES 
   import Main from './pages/main';
@@ -49,6 +50,9 @@ function App() {
 
       </Routes>
 
+      <br></br>
+      
+      <Footer/>
     </div>
 
   );

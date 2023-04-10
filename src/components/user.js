@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const Usernav = (props) => {
   return (
     <nav className='usernav'>
-
         <Link to='/register'>
             <div>Register</div>
         </Link>
