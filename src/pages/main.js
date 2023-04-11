@@ -18,21 +18,20 @@ const imgGallery = () => {
   return (
       <div className="img-main">
       <a href="" onClick={handleClick}>
-          <img src="https://travellersworldwide.com/wp-content/uploads/2022/12/Shutterstock_2045606852.jpg" alt="destination1" />
+          <img src="https://travellersworldwide.com/wp-content/uploads/2022/12/Shutterstock_2045606852.jpg" className="destination" />
       </a>
       <a href="" onClick={handleClick}>
-      <img src="https://www.travelanddestinations.com/wp-content/uploads/2019/03/Switzerland-Landscapes.jpg"alt="destination1" />
+      <img src="https://www.travelanddestinations.com/wp-content/uploads/2019/03/Switzerland-Landscapes.jpg" className="destination" />
       </a>
       <a href="" onClick={handleClick}>
-      <img src="https://boraboraphotos.com/wp-content/uploads/2012/12/four-seasons-resort-bora-bora-mt-otemanu.jpg" alt="destination3" />
+      <img src="https://boraboraphotos.com/wp-content/uploads/2012/12/four-seasons-resort-bora-bora-mt-otemanu.jpg" className="destination" />
       </a>
       <a href="" onClick={handleClick}>
-          <img src="https://www.gotokyo.org/en/plan/tokyo-outline/images/main.jpg" alt="destination4" />
+          <img src="https://www.gotokyo.org/en/plan/tokyo-outline/images/main.jpg" className="destination" />
       </a>
       </div>
   );
 };
-
 
 
 
@@ -46,11 +45,11 @@ const imgGallery = () => {
 
 
 
-  // Define a function to handle the search button click
+ // Define a function to handle the search button click
   const handleSearch = async () => {
     try {
       // Send a request to the backend API to get restaurants for the search query
-      const response = await Axios.get(`/destinations/${searchQuery}`);
+      const response = await Axios.get(`/restaurants/${searchQuery}`);
       setRestaurants(response.data.data);
     } catch (error) {
       console.error(error);
@@ -58,13 +57,14 @@ const imgGallery = () => {
   };
 
 
+  
+
 
   return (
-    <div>
-        <h1>Search by City</h1>
-      <div>
-        <input type="text" placeholder = "Enter your destination" value={searchQuery} onChange={handleInputChange} />
-        <button onClick={handleSearch}>Search</button>
+    <div className="container">
+      <div className='search-bar'>
+        <input type="text" placeholder = "Enter your destination by City" value={searchQuery} onChange={handleInputChange} />
+        <button id="searchbttn" onClick={handleSearch}>Search</button>
       </div>
       {/* <Map google={props.google} center={destination} /> */}
       {imgGallery()}

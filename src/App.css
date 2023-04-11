@@ -4,6 +4,7 @@
 /* 
 setting top, left and right to 0 to position the nav at the top */
 
+
 nav {
   position:fixed;
   top: 0;
@@ -19,29 +20,86 @@ ul {
   justify-content: space-evenly;
 }
 
-form {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .usernav{
   display: flex;
+  position: relative;
   justify-content: flex-end;
   align-items: center;
 }
 
+
+#register, #Login {
+  margin: 8px;
+}
+
+
+#wishlist{
+  margin: 15px;
+}
+
+
 .img-main {
   display: inline-block;
-  margin: 5px;
 }
 
-img {
+img.destination {
   width: 800px;
   height: 600px;
+  opacity: 0.;
 }
 
-.img-container {
+.container {
   position: relative;
+}
+
+.search-bar {
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 600px;
+  background-color: black;
+  opacity: 0.9;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.search-bar input[type="text"] {
+  width: 70%;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+button#searchbttn{
+  width: 20%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.name{
+  font-size: 50px;
+  margin-top: 60px;
+  margin-bottom: 0;
+  text-decoration: none;
+}
+
+#icons {
+  width: 80px;
+  height: 80px;
+}
+
+#icon {
+  width: 50px;
+  height: 50px;
+}
+
+a {
+  text-decoration: none;
+  color:black;
 }

@@ -26,8 +26,7 @@ function App() {
   return (
     <>
     <div className="App">
-    <h1>YONDERWAY</h1>
-    <p></p>
+
       <br></br>
 
       <Usernav/>
@@ -48,6 +47,7 @@ function App() {
         <Route path="/attractions" element={<Attractions/>}/>;
         <Route path="/hotels" element={<Hotels/>}/>;
         <Route path="/restaurants" element={<Restaurants/>}/>;
+        <Route path="/wishlist" element={<Wishlist/>}/>;
 
       </Routes>
 

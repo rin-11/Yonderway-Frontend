@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 
 
 const Attractions = (props) => {
-    return <h1>This is the Attractions Component</h1>;
+    return (
+     <div>
+        <h1> Attractions </h1>
+            <img src="https://static.thenounproject.com/png/4538455-200.png" id="icons" />
+     </div>
+    )
 
 }
 
