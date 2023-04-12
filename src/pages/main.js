@@ -1,32 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import api from '../utils/api';
+import { Link } from 'react-router-dom';
 
 const Main = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [restaurants, setRestaurants] = useState([]);
+  const [destinations, setDestinations] = useState([]);
 
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  useEffect(() => {
+    fetchDestinations();
+  }, []);
 
-  const handleSearch = async () => {
+  const fetchDestinations = async () => {
     try {
-      const response = await api.get(`/restaurant/${searchQuery}`);
-      setRestaurants(response.data.data);
+      const response = await api.get('/destinations/random-photos');
+      console.log(response.data);
+      setDestinations(response.data.photos);
     } catch (error) {
       console.error(error);
     }
   };
+  
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
-  const renderRestaurants = () => {
-    return restaurants.map((restaurant, index) => (
+  const renderDestinations = () => {
+    return destinations.map((destination, index) => (
       <div key={index}>
-        <h2>{restaurant.name}</h2>
-        <p>Rating: {restaurant.rating}</p>
-        <p>Description: {restaurant.description}</p>
-        {restaurant.photo ? (
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" />
-        ) : null}
+        <img src={destination} alt="Destination" />
       </div>
     ));
   };
@@ -36,9 +37,9 @@ const Main = (props) => {
       <h1>Search by City</h1>
       <div>
         <input type="text" placeholder="Enter your destination" value={searchQuery} onChange={handleInputChange} />
-        <button onClick={handleSearch}>Search</button>
+        <Link to={`/restaurants?city=${searchQuery}`}><button>Search</button></Link>
       </div>
-      {restaurants.length > 0 ? renderRestaurants() : null}
+      {destinations.length > 0 ? renderDestinations() : null}
     </div>
   );
 };
