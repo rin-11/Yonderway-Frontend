@@ -3,45 +3,34 @@ import api from '../utils/api';
 import { Link } from 'react-router-dom';
 
 const Main = (props) => {
+  // Declare state variables for search query and destinations
   const [searchQuery, setSearchQuery] = useState('');
   const [destinations, setDestinations] = useState([]);
 
+  // Fetch destinations on component mount using useEffect
   useEffect(() => {
     fetchDestinations();
   }, []);
 
+  // Function to fetch destinations using the API
   const fetchDestinations = async () => {
     try {
+      // Send GET request to the /destinations/random-photos endpoint
       const response = await api.get('/destinations/random-photos');
       console.log(response.data);
+      // Update destinations state with the received photos
       setDestinations(response.data.photos);
     } catch (error) {
       console.error(error);
     }
   };
-  
+
+  // Function to handle input change event
   const handleInputChange = (event) => {
+    // Update the search query state with the new input value
     setSearchQuery(event.target.value);
   };
 
+  // Function to render destination images
   const renderDestinations = () => {
-    return destinations.map((destination, index) => (
-      <div key={index}>
-        <img src={destination} alt="Destination" />
-      </div>
-    ));
-  };
-
-  return (
-    <div>
-      <h1>Search by City</h1>
-      <div>
-        <input type="text" placeholder="Enter your destination" value={searchQuery} onChange={handleInputChange} />
-        <Link to={`/restaurants?city=${searchQuery}`}><button>Search</button></Link>
-      </div>
-      {destinations.length > 0 ? renderDestinations() : null}
-    </div>
-  );
-};
-
-export default Main;
+    // Map through the destinations array and return an image element for each
