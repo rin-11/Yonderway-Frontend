@@ -1,15 +1,15 @@
 import { useState } from 'react';
 // npm install google-maps-react
 // import { Map, GoogleApiWrapper } from 'google-maps-react';
-//Display Search by Image and Search Bar 
+// Display Search by Image and Search Bar 
 
 const Main = (props) => {
-    const [searchQuery, setSearchQuery] = useState('');
+    // const [searchQuery, setSearchQuery] = useState('');
     const [destination, setDestination] = useState(null);
 
-    const handleInputChange = (event) => {
-        setSearchQuery(event.target.value);
-    };
+    // const handleInputChange = (event) => {
+    //     setSearchQuery(event.target.value);
+    // };
 
     // const handleSearch = () => {
     //     const { google } = props;
@@ -28,7 +28,7 @@ const Main = (props) => {
     <div>
         <h1>Search by City</h1>
       <div>
-        <input type="text" value={searchQuery} onChange={handleInputChange} />
+        {/* <input type="text" value={searchQuery} onChange={handleInputChange} /> */}
         {/* <button onClick={handleSearch}>Search</button> */}
       </div>
       {/* <Map google={props.google} center={destination} /> */}
