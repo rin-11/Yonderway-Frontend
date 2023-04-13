@@ -1,43 +1,59 @@
-import { useState } from 'react';
-// npm install google-maps-react
-// import { Map, GoogleApiWrapper } from 'google-maps-react';
-// Display Search by Image and Search Bar 
+import { useState, useEffect } from 'react';
+import api from '../utils/api';
+import { Link } from 'react-router-dom';
 
 const Main = (props) => {
-    // const [searchQuery, setSearchQuery] = useState('');
-    const [destination, setDestination] = useState(null);
+  // Declare state variables for search query and destinations
+  const [searchQuery, setSearchQuery] = useState('');
+  const [destinations, setDestinations] = useState([]);
 
-    // const handleInputChange = (event) => {
-    //     setSearchQuery(event.target.value);
-    // };
+  // Fetch destinations on component mount using useEffect
+  useEffect(() => {
+    fetchDestinations();
+  }, []);
 
-    // const handleSearch = () => {
-    //     const { google } = props;
-    //     const service = new google.maps.places.PlacesService(document.createElement('div'));
-    //     service.textSearch({ query: searchQuery }, (results, status) => {
-    //         if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //             const { geometry: { location } } = results[0];
-    //             setDestination(location);
-    //         } else {
-    //             console.error('Error searching for city:', status);
-    //         }
-    //     });
-    // };
+  // Function to fetch destinations using the API
+  const fetchDestinations = async () => {
+    try {
+      // Send GET request to the /destinations/random-photos endpoint
+      const response = await api.get('/destinations/random-photos');
+      console.log(response.data);
+      // Update destinations state with the received photos
+      setDestinations(response.data.photos);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Function to handle input change event
+  const handleInputChange = (event) => {
+    // Update the search query state with the new input value
+    setSearchQuery(event.target.value);
+  };
+
+  // Function to render destination images
+  const renderDestinations = () => {
+    // Map through the destinations array and return an image element for each destination
+    return destinations.map((destination, index) => (
+      <div key={index}>
+        <img src={destination} alt="Destination" />
+      </div>
+    ));
+  };
 
   return (
     <div>
-        <h1>Search by City</h1>
+      <h1>Search by City</h1>
       <div>
-        {/* <input type="text" value={searchQuery} onChange={handleInputChange} /> */}
-        {/* <button onClick={handleSearch}>Search</button> */}
+        {/* Input field for entering the destination city */}
+        <input type="text" placeholder="Enter your destination" value={searchQuery} onChange={handleInputChange} />
+        {/* Link component from react-router-dom to navigate to the restaurants page with the searchQuery as a URL parameter */}
+        <Link to={`/restaurants?city=${searchQuery}`}><button>Search</button></Link>
       </div>
-      {/* <Map google={props.google} center={destination} /> */}
+      {/* Render destination images only if the destinations array has data */}
+      {destinations.length > 0 ? renderDestinations() : null}
     </div>
   );
-}
+};
 
 export default Main;
-
-// export default GoogleApiWrapper({
-//   apiKey: 'YOUR_API_KEY'
-// })(Main);

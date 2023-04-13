@@ -2,19 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
+
 const Header = (props) => {
+
   return (
+    <>
+    <div>
+    <Link to="/">
+    <h1 className="name">YONDERWAY</h1>
+  </Link> <br/>
+  </div>
     <div className="nav">
-        <Link to="/hotels">
-          <div>Hotels</div>
-        </Link>
+      <ul>
         <Link to="/attractions">
-          <div>Attractions</div>
+          <img src="https://static.thenounproject.com/png/4538455-200.png" id="icon" />
+          <h3>Attractions</h3>
+        </Link>
+        <Link to="/hotels">
+          <img src="https://static.thenounproject.com/png/1650638-200.png" id="icon"/>
+          <h3>Hotels</h3>
         </Link>
         <Link to="/restaurants">
-          <div>Restaurants</div>
+          <img src="https://static.thenounproject.com/png/1062711-200.png" id="icon" />
+          <h3>Restaurants</h3>
         </Link>
+        </ul>
     </div>
+    </>
   );
 };
 

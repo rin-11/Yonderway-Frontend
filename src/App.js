@@ -22,11 +22,11 @@ import { Route, Routes } from "react-router-dom";
 
 
 function App() {
-
+ 
   return (
-
+    <>
     <div className="App">
-      
+
       <br></br>
 
       <Usernav/>
@@ -47,6 +47,7 @@ function App() {
         <Route path="/attractions" element={<Attractions/>}/>;
         <Route path="/hotels" element={<Hotels/>}/>;
         <Route path="/restaurants" element={<Restaurants/>}/>;
+        <Route path="/wishlist" element={<Wishlist/>}/>;
 
       </Routes>
 
@@ -54,7 +55,7 @@ function App() {
       
       <Footer/>
     </div>
-
+    </>
   );
 }
 
