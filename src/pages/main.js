@@ -1,32 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import api from '../utils/api';
+import { Link } from 'react-router-dom';
 
 const Main = (props) => {
+  // Declare state variables for search query and destinations
   const [searchQuery, setSearchQuery] = useState('');
-  const [restaurants, setRestaurants] = useState([]);
+  const [destinations, setDestinations] = useState([]);
 
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  // Fetch destinations on component mount using useEffect
+  useEffect(() => {
+    fetchDestinations();
+  }, []);
 
-  const handleSearch = async () => {
+  // Function to fetch destinations using the API
+  const fetchDestinations = async () => {
     try {
-      const response = await api.get(`/restaurant/${searchQuery}`);
-      setRestaurants(response.data.data);
+      // Send GET request to the /destinations/random-photos endpoint
+      const response = await api.get('/destinations/random-photos');
+      console.log(response.data);
+      // Update destinations state with the received photos
+      setDestinations(response.data.photos);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const renderRestaurants = () => {
-    return restaurants.map((restaurant, index) => (
+  // Function to handle input change event
+  const handleInputChange = (event) => {
+    // Update the search query state with the new input value
+    setSearchQuery(event.target.value);
+  };
+
+  // Function to render destination images
+  const renderDestinations = () => {
+    // Map through the destinations array and return an image element for each destination
+    return destinations.map((destination, index) => (
       <div key={index}>
-        <h2>{restaurant.name}</h2>
-        <p>Rating: {restaurant.rating}</p>
-        <p>Description: {restaurant.description}</p>
-        {restaurant.photo ? (
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" />
-        ) : null}
+        <img src={destination} alt="Destination" />
       </div>
     ));
   };
@@ -35,10 +45,13 @@ const Main = (props) => {
     <div>
       <h1>Search by City</h1>
       <div>
+        {/* Input field for entering the destination city */}
         <input type="text" placeholder="Enter your destination" value={searchQuery} onChange={handleInputChange} />
-        <button onClick={handleSearch}>Search</button>
+        {/* Link component from react-router-dom to navigate to the restaurants page with the searchQuery as a URL parameter */}
+        <Link to={`/restaurants?city=${searchQuery}`}><button>Search</button></Link>
       </div>
-      {restaurants.length > 0 ? renderRestaurants() : null}
+      {/* Render destination images only if the destinations array has data */}
+      {destinations.length > 0 ? renderDestinations() : null}
     </div>
   );
 };
