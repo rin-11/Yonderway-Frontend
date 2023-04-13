@@ -1,79 +1,59 @@
-import { useState } from 'react';
-import { Axios } from 'axios';
-
-// npm install google-maps-react
-// import { Map, GoogleApiWrapper } from 'google-maps-react';
-//Display Search by Image and Search Bar 
+import { useState, useEffect } from 'react';
+import api from '../utils/api';
+import { Link } from 'react-router-dom';
 
 const Main = (props) => {
+  // Declare state variables for search query and destinations
+  const [searchQuery, setSearchQuery] = useState('');
+  const [destinations, setDestinations] = useState([]);
 
+  // Fetch destinations on component mount using useEffect
+  useEffect(() => {
+    fetchDestinations();
+  }, []);
 
-const handleClick =(event)=> {
-  event.preventDefault();
-  console.log('image clicked')
-}
-
-//images shown in the main page 
-const imgGallery = () => {
-  return (
-      <div className="img-main">
-      <a href="" onClick={handleClick}>
-          <img src="https://travellersworldwide.com/wp-content/uploads/2022/12/Shutterstock_2045606852.jpg" className="destination" />
-      </a>
-      <a href="" onClick={handleClick}>
-      <img src="https://www.travelanddestinations.com/wp-content/uploads/2019/03/Switzerland-Landscapes.jpg" className="destination" />
-      </a>
-      <a href="" onClick={handleClick}>
-      <img src="https://boraboraphotos.com/wp-content/uploads/2012/12/four-seasons-resort-bora-bora-mt-otemanu.jpg" className="destination" />
-      </a>
-      <a href="" onClick={handleClick}>
-          <img src="https://www.gotokyo.org/en/plan/tokyo-outline/images/main.jpg" className="destination" />
-      </a>
-      </div>
-  );
-};
-
-
-
-    const [searchQuery, setSearchQuery] = useState('');
-    const [destination, setDestination] = useState(null);
-    const [restaurants, setRestaurants] = useState('');
-
-    const handleInputChange = (event) => {
-        setSearchQuery(event.target.value);
-    };
-
-
-
- // Define a function to handle the search button click
-  const handleSearch = async () => {
+  // Function to fetch destinations using the API
+  const fetchDestinations = async () => {
     try {
-      // Send a request to the backend API to get restaurants for the search query
-      const response = await Axios.get(`/restaurants/${searchQuery}`);
-      setRestaurants(response.data.data);
+      // Send GET request to the /destinations/random-photos endpoint
+      const response = await api.get('/destinations/random-photos');
+      console.log(response.data);
+      // Update destinations state with the received photos
+      setDestinations(response.data.photos);
     } catch (error) {
       console.error(error);
     }
   };
 
+  // Function to handle input change event
+  const handleInputChange = (event) => {
+    // Update the search query state with the new input value
+    setSearchQuery(event.target.value);
+  };
 
-  
-
+  // Function to render destination images
+  const renderDestinations = () => {
+    // Map through the destinations array and return an image element for each destination
+    return destinations.map((destination, index) => (
+      <div key={index}>
+        <img src={destination} alt="Destination" />
+      </div>
+    ));
+  };
 
   return (
-    <div className="container">
-      <div className='search-bar'>
-        <input type="text" placeholder = "Enter your destination by City" value={searchQuery} onChange={handleInputChange} />
-        <button id="searchbttn" onClick={handleSearch}>Search</button>
+    <div>
+      <h1>Search by City</h1>
+      <div>
+        {/* Input field for entering the destination city */}
+        <input type="text" placeholder="Enter your destination" value={searchQuery} onChange={handleInputChange} />
+        {/* Link component from react-router-dom to navigate to the restaurants page with the searchQuery as a URL parameter */}
+        <Link to={`/restaurants?city=${searchQuery}`}><button>Search</button></Link>
       </div>
-      {/* <Map google={props.google} center={destination} /> */}
-      {imgGallery()}
+      {/* Render destination images only if the destinations array has data */}
+      {destinations.length > 0 ? renderDestinations() : null}
     </div>
   );
-}
+};
 
 export default Main;
-
-// export default GoogleApiWrapper({
-//   apiKey: 'YOUR_API_KEY'
-// })(Main);
