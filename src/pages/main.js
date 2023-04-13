@@ -33,4 +33,27 @@ const Main = (props) => {
 
   // Function to render destination images
   const renderDestinations = () => {
-    // Map through the destinations array and return an image element for each
+    // Map through the destinations array and return an image element for each destination
+    return destinations.map((destination, index) => (
+      <div key={index}>
+        <img src={destination} alt="Destination" />
+      </div>
+    ));
+  };
+
+  return (
+    <div>
+      <h1>Search by City</h1>
+      <div>
+        {/* Input field for entering the destination city */}
+        <input type="text" placeholder="Enter your destination" value={searchQuery} onChange={handleInputChange} />
+        {/* Link component from react-router-dom to navigate to the restaurants page with the searchQuery as a URL parameter */}
+        <Link to={`/restaurants?city=${searchQuery}`}><button>Search</button></Link>
+      </div>
+      {/* Render destination images only if the destinations array has data */}
+      {destinations.length > 0 ? renderDestinations() : null}
+    </div>
+  );
+};
+
+export default Main;
