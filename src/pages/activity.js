@@ -1,5 +1,3 @@
-
-//Display:
 //header
 //footer
 // photo 
@@ -7,5 +5,3 @@
 // reviews 
 // Add to wishlist button
 //test if we can use one file for all pages 
-
-//Bella 

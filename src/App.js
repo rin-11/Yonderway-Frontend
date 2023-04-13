@@ -10,7 +10,7 @@ import { Route, Routes } from "react-router-dom";
 
 //IMPORT PAGES 
   import Main from './pages/main';
-
+  import Activity from './pages/activity';
   import Register from './pages/userpages/register';
   import Login from './pages/userpages/login';
   import Wishlist from './pages/userpages/wishlist';
