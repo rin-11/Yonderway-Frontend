@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import { Link } from "react-router-dom";
 
+//Jess to style 
+
 const Register = (props) => {
   
   const [newUser, setNewUser] = useState({

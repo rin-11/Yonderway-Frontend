@@ -8,16 +8,16 @@ const Usernav = (props) => {
   return (
     <nav className='usernav'>
         <Link to='/register'>
-            <div>Register</div>
+            <button id="register">Register</button>
         </Link>
 
         <Link to='/login'>
-            <div>Login</div>
-        </Link>   
+            <button id="login">Login</button>
+        </Link>
 
         <Link to='/wishlist'>
-            <div>User Wishlist</div>
-        </Link>   
+            <div id="wishlist">User Wishlist</div>
+        </Link> <br/>
     </nav>
   );
 };
