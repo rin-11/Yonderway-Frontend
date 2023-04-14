@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
   import Header from './components/header';
   import Usernav from './components/user';
   import Footer from './components/footer'
+  import Title from "./components/title";
 
 //IMPORT PAGES 
   import Main from './pages/main';
@@ -14,6 +15,7 @@ import { Route, Routes } from "react-router-dom";
   import Register from './pages/userpages/register';
   import Login from './pages/userpages/login';
   import Wishlist from './pages/userpages/wishlist';
+
 
 
   import Hotels from './pages/hotels';
@@ -27,12 +29,15 @@ function App() {
     <>
     <div className="App">
 
+
+       <Title/>
+      
       <br></br>
 
       <Usernav/>
       
       <br></br>
-
+      
       <Header/>
       
       <br></br>

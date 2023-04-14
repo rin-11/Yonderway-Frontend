@@ -41,7 +41,7 @@ const Restaurants = (props) => {
         <p>Description: {restaurant.description}</p>
         {/* Check if a photo is available for the restaurant, and render it if it exists */}
         {restaurant.photo ? (
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" />
+          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" className='activities' />
         ) : null}
       </div>
     ));
