@@ -7,11 +7,6 @@ const Header = (props) => {
 
   return (
     <>
-    <div>
-    <Link to="/">
-    <h1 className="name">YONDERWAY</h1>
-  </Link> <br/>
-  </div>
     <div className="nav">
       <ul>
         <Link to="/attractions">
