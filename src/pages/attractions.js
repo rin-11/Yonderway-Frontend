@@ -1,20 +1,17 @@
-import { Link } from "react-router-dom";
-
-//useState and useEffect
-
+import { useState, useEffect } from 'react';
+import { Link, useParams } from "react-router-dom";
 
 const Attractions = (props) => {
+    // Retrieve the searchQuery parameter from the URL using the useParams hook
+    const { searchQuery } = useParams();
+    
     return (
      <div>
-        <h1> Attractions </h1>
-            <img src="https://static.thenounproject.com/png/4538455-200.png" id="icons" />
+        {searchQuery ? null : <h1> Attractions.js </h1> }
+        
      </div>
     )
 
 }
 
 export default Attractions;
-
-
-
-

@@ -2,64 +2,59 @@ import React from "react";
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 
+// IMPORT COMPONENTS
+import Header from './components/header';
+import Usernav from './components/user';
+import Footer from './components/footer';
 
-//IMPORT COMPONENTS
-  import Header from './components/header';
-  import Usernav from './components/user';
-  import Footer from './components/footer'
-  import Title from "./components/title";
+// IMPORT PAGES 
+import Main from './pages/main';
+import Activity from './pages/activity';
+import Register from './pages/userpages/register';
+import Login from './pages/userpages/login';
+import Wishlist from './pages/userpages/wishlist';
 
-//IMPORT PAGES 
-  import Main from './pages/main';
-  import Activity from './pages/activity';
-  import Register from './pages/userpages/register';
-  import Login from './pages/userpages/login';
-  import Wishlist from './pages/userpages/wishlist';
-
-
-
-  import Hotels from './pages/hotels';
-  import Restaurants from './pages/restaurants';
-  import Attractions from './pages/attractions';
-
+import Hotels from './pages/hotels';
+import Restaurants from './pages/restaurants';
+import Attractions from './pages/attractions';
+import City from './pages/City'; // Import the City component
 
 function App() {
- 
+
   return (
     <>
-    <div className="App">
+      <div className="App">
 
+        <br></br>
 
-       <Title/>
-      
-      <br></br>
+        <Usernav />
 
-      <Usernav/>
-      
-      <br></br>
-      
-      <Header/>
-      
-      <br></br>
+        <br></br>
 
-      <Routes>
+        <Header />
 
-        <Route path="/" element={<Main/>}/>;
+        <br></br>
 
-        <Route path="/register" element={<Register/>}/>;
-        <Route path="/login" element={<Login/>}/>;
+        <Routes>
 
-        <Route path="/attractions" element={<Attractions/>}/>;
-        <Route path="/hotels" element={<Hotels/>}/>;
-        <Route path="/restaurants" element={<Restaurants/>}/>;
-        <Route path="/wishlist" element={<Wishlist/>}/>;
+          <Route path="/" element={<Main />} />;
 
-      </Routes>
+          <Route path="/register" element={<Register />} />;
+          <Route path="/login" element={<Login />} />;
 
-      <br></br>
-      
-      <Footer/>
-    </div>
+          <Route path="/attractions" element={<Attractions />} />;
+          <Route path="/hotels" element={<Hotels />} />;
+          <Route path="/restaurants" element={<Restaurants />} />;
+          <Route path="/wishlist" element={<Wishlist />} />;
+
+          <Route path="/city/:cityId" element={<City />} />; // Add the route for the city page
+
+        </Routes>
+
+        <br></br>
+
+        <Footer />
+      </div>
     </>
   );
 }
