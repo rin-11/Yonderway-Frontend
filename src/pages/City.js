@@ -53,13 +53,18 @@ const City = (props) => {
   // Render hotels as JSX elements
   const renderHotels = () => {
     return hotels.map((hotel, index) => (
-      <div key={index}>
-        <h2>{hotel.name}</h2>
-        <p>Rating: {hotel.rating}</p>
-        <p>Description: {hotel.description}</p>
-        {hotel.photo ? (
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${hotel.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Hotel" />
+      <div className='activity_container' key={index}>
+         {hotel.photo ? (
+          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${hotel.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Hotel"  className='activities' />
         ) : null}
+        <div>
+        <h2 className='act-name'>{hotel.name}</h2>
+        <div className='rating'>
+          <img src='https://cdn-icons-png.flaticon.com/512/56/56786.png' id='star'></img> <h3 className='rating-num'>{hotel.rating}</h3>
+        </div>
+        </div>
+        {/* <p>Rating: {hotel.rating}</p> */}
+        <p  className='address'>Address: {hotel.description}</p>
       </div>
     ));
   };
@@ -67,13 +72,17 @@ const City = (props) => {
   // Render restaurants as JSX elements
   const renderRestaurants = () => {
     return restaurants.map((restaurant, index) => (
-      <div key={index}>
-        <h2>{restaurant.name}</h2>
-        <p>Rating: {restaurant.rating}</p>
-        <p>Description: {restaurant.description}</p>
-        {restaurant.photo ? (
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" />
+      <div className='activity_container' key={index}>
+           {restaurant.photo ? (
+          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant"  className='activities'/>
         ) : null}
+     <div>
+        <h2 className='act-name'>{restaurant.name}</h2>
+        <div className='rating'>
+        <img src='https://cdn-icons-png.flaticon.com/512/56/56786.png' id='star'></img> <h3 className='rating-num'> {restaurant.rating}</h3>
+        </div>
+      </div>
+      <p  className='address'>Address: {restaurant.description}</p>
       </div>
     ));
   };
@@ -82,29 +91,33 @@ const City = (props) => {
   // Render attractions as JSX elements
   const renderAttractions = () => {
     return attractions.map((attraction, index) => (
-      <div key={index}>
-        <h2>{attraction.name}</h2>
-        <p>Rating: {attraction.rating}</p>
-        <p>Description: {attraction.description}</p>
-        {attraction.photo ? (
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Attraction" />
+      <div className='activity_container' key={index}>
+         {attraction.photo ? (
+          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Attraction"  className='activities'/>
         ) : null}
+      <div>
+        <h2 className='act-name'>{attraction.name}</h2>
+        <div className='rating'>
+        <img src='https://cdn-icons-png.flaticon.com/512/56/56786.png' id='star'></img> <h3 className='rating-num'>{attraction.rating}</h3>
+        </div>
+      </div>
+        <p className='address'>Address: {attraction.description}</p>
       </div>
     ));
   };
 
   // Return the rendered JSX with hotels, restaurants, and attractions
   return (
-    <div>
-      <h1>Hotels</h1>
+    <div >
+      <h1 className='category-show'>HOTELS</h1>
       {/* Render hotels if there are any */}
       {hotels.length > 0 ? renderHotels() : null}
       
-      <h1>Restaurants</h1>
+      <h1>RESTAURANTS</h1>
       {/* Render restaurants if there are any */}
       {restaurants.length > 0 ? renderRestaurants() : null}
 
-      <h1>Attractions</h1>
+      <h1>ATTRACTIONS</h1>
       {/* Render attractions if there are any */}
       {attractions.length > 0 ? renderAttractions() : null}
     </div>
