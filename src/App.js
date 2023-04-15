@@ -1,24 +1,25 @@
 import React from "react";
 import './App.css';
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 
 //IMPORT COMPONENTS
-  import Header from './components/header';
-  import Usernav from './components/user';
-  import Footer from './components/footer'
+import Header from './components/header';
+import Usernav from './components/user';
+import Footer from './components/footer';
+import Body from './components/body';
 
 //IMPORT PAGES 
-  import Main from './pages/main';
-  import Activity from './pages/activity';
-  import Register from './pages/userpages/register';
-  import Login from './pages/userpages/login';
-  import Wishlist from './pages/userpages/wishlist';
+import Main from './pages/main';
+import Activity from './pages/activity';
+import Register from './pages/userpages/register';
+import Login from './pages/userpages/login';
+import Wishlist from './pages/userpages/wishlist';
 
 
-  import Hotels from './pages/hotels';
-  import Restaurants from './pages/restaurants';
-  import Attractions from './pages/attractions';
+import Hotels from './pages/hotels';
+import Restaurants from './pages/restaurants';
+import Attractions from './pages/attractions';
 
 
 function App() {
@@ -36,23 +37,23 @@ function App() {
       <Header/>
       
       <br></br>
+          <Routes>
 
-      <Routes>
+            <Route path="/" element={<Main />} />;
 
-        <Route path="/" element={<Main/>}/>;
+            <Route path="/register" element={<Register />} />;
+            <Route path="/login" element={<Login />} />;
 
-        <Route path="/register" element={<Register/>}/>;
-        <Route path="/login" element={<Login/>}/>;
+            <Route path="/attractions" element={<Attractions />} />;
+            <Route path="/hotels" element={<Hotels />} />;
+            <Route path="/restaurants" element={<Restaurants />} />;
+            <Route path="/wishlist" element={<Wishlist />} />;
 
-        <Route path="/attractions" element={<Attractions/>}/>;
-        <Route path="/hotels" element={<Hotels/>}/>;
-        <Route path="/restaurants" element={<Restaurants/>}/>;
-        <Route path="/wishlist" element={<Wishlist/>}/>;
-
-      </Routes>
-
-      <br></br>
+          </Routes>
       
+      <br></br>
+      <Body/>
+
       <Footer/>
     </div>
     </>

@@ -1,6 +1,15 @@
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Permanent+Marker&family=Zeyada&display=swap');
+
 .App {
-  text-align: center;
+text-align: center;
+
 }
+
+body {
+  background-color: whitesmoke;
+}
+
 /* 
 setting top, left and right to 0 to position the nav at the top */
 
@@ -43,14 +52,17 @@ ul {
 }
 
 img.destination {
-  width: 800px;
-  height: 600px;
+  width: 900px;
+  height: 700px;
   opacity: 0.;
+  margin: 2px;
+  border-radius: 10px;
 }
 
 .container {
   position: relative;
 }
+
 
 .search-bar {
   position: absolute;
@@ -59,7 +71,7 @@ img.destination {
   transform: translate(-50%, -50%);
   width: 50%;
   max-width: 600px;
-  background-color: black;
+  background-color: rgb(29, 28, 28);
   opacity: 0.9;
   padding: 20px;
   border-radius: 5px;
@@ -73,6 +85,30 @@ img.destination {
   outline: none;
 }
 
+button#user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: white;
+  border: none;
+  box-shadow: 3px 3px 10px #c5c5c5,
+  -1px -1px 10px #ffffff;
+  padding: 10px;
+  width: 120px;
+  font-size: 15px;
+}
+
+button#user:hover {
+  background-color: black;
+  color: azure;
+}
+
+button {
+  margin: 5px;
+}
+
+
 button#searchbttn{
   width: 20%;
   padding: 15px;
@@ -82,11 +118,16 @@ button#searchbttn{
   margin: 10px;
 }
 
+
+
 .name{
-  font-size: 50px;
+  font-size: 70px;
   margin-top: 60px;
   margin-bottom: 0;
   text-decoration: none;
+  font-family: 'Caveat', cursive;
+  font-family: 'Permanent Marker', cursive;
+  font-family: 'Zeyada', cursive;
 }
 
 #icons {
@@ -95,11 +136,26 @@ button#searchbttn{
 }
 
 #icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
+
+#icon2 {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+
 
 a {
   text-decoration: none;
   color:black;
+}
+
+.activities {
+  width: 500px;
+  height: 400px;
+  opacity: 0.;
+  margin: 2px;
+  border-radius: 10px;
 }
