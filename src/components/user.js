@@ -20,10 +20,10 @@ const Usernav = (props) => {
         </Link>
 
         <Link to='/wishlist'>
-            <div id="wishlist">
+            <div className="wishlist">
             <img src="https://freeiconshop.com/wp-content/uploads/edd/heart-outline.png"  id="icon2"></img>
 
-              User Wishlist</div>
+              <h1 className="list">Wishlist</h1></div>
         </Link> <br/>
     </nav>
   );

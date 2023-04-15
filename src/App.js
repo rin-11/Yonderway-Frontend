@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from './components/header';
 import Usernav from './components/user';
 import Footer from './components/footer';
+import Title from "./components/title";
 
 // IMPORT PAGES 
 import Main from './pages/main';
@@ -25,10 +26,8 @@ function App() {
     <>
       <div className="App">
 
-        <br></br>
-
         <Usernav />
-
+        <Title/>
         <br></br>
 
         <Header />
