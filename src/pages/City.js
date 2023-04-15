@@ -5,11 +5,13 @@ import { useParams } from 'react-router-dom';
 const City = (props) => {
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
+  const [attractions, setAttractions] = useState([]);
   const { cityId } = useParams();
 
   useEffect(() => {
     fetchHotels(cityId);
     fetchRestaurants(cityId);
+    fetchAttractions(cityId);
   }, [cityId]);
 
   const fetchHotels = async (city) => {
@@ -29,6 +31,16 @@ const City = (props) => {
       console.error(error);
     }
   };
+
+  const fetchAttractions = async (city) => {
+    try {
+      const response = await api.get(`/attractions/${city}/tourist_attraction`);
+      setAttractions(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
 
   const renderHotels = () => {
     return hotels.map((hotel, index) => (
@@ -55,6 +67,18 @@ const City = (props) => {
       </div>
     ));
   };
+const renderAttractions = () => {
+    return attractions.map((attraction, index) => (
+      <div key={index}>
+        <h2>{attraction.name}</h2>
+        <p>Rating: {attraction.rating}</p>
+        <p>Description: {attraction.description}</p>
+        {attraction.photo ? (
+          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Attraction" />
+        ) : null}
+      </div>
+    ));
+  };
 
   return (
     <div>
@@ -62,8 +86,15 @@ const City = (props) => {
       {hotels.length > 0 ? renderHotels() : null}
       <h1>Restaurants</h1>
       {restaurants.length > 0 ? renderRestaurants() : null}
+      <h1>Attractions</h1>
+      {attractions.length > 0 ? renderAttractions() : null}
     </div>
   );
 };
 
 export default City;
+
+
+
+
+
