@@ -1,46 +1,47 @@
-import { useState, useEffect } from 'react';
-import api from '../utils/api';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react'; // importing React hooks for state and side effects
+import api from '../utils/api'; // importing api module for making HTTP requests
+import { useParams } from 'react-router-dom'; // importing useParams hook from react-router-dom to access URL parameters
 
-const City = (props) => {
-  const [hotels, setHotels] = useState([]);
-  const [restaurants, setRestaurants] = useState([]);
-  const [attractions, setAttractions] = useState([]);
-  const { cityId } = useParams();
+const City = (props) => { // defining a functional component called City
+  const [hotels, setHotels] = useState([]); // using the useState hook to create a state for hotels
+  const [restaurants, setRestaurants] = useState([]); // using the useState hook to create a state for restaurants
+  const [attractions, setAttractions] = useState([]); // using the useState hook to create a state for attractions
+  const { cityId } = useParams(); // using the useParams hook to get the cityId parameter from the URL
 
-  useEffect(() => {
-    fetchHotels(cityId);
-    fetchRestaurants(cityId);
-    fetchAttractions(cityId);
-  }, [cityId]);
+  useEffect(() => { // using the useEffect hook to perform side effects (fetching data)
+    fetchHotels(cityId); // calling fetchHotels with the cityId parameter to fetch hotels data
+    fetchRestaurants(cityId); // calling fetchRestaurants with the cityId parameter to fetch restaurants data
+    fetchAttractions(cityId); // calling fetchAttractions with the cityId parameter to fetch attractions data
+  }, [cityId]); // specifying the cityId parameter as a dependency for useEffect to run whenever it changes
 
-  const fetchHotels = async (city) => {
+  const fetchHotels = async (city) => { // defining an asynchronous function called fetchHotels to fetch hotels data
     try {
-      const response = await api.get(`/hotel/${city}`);
-      setHotels(response.data.data);
+      const response = await api.get(`/hotel/${city}`); // making a GET request to the hotels endpoint with the city parameter
+      setHotels(response.data.data); // setting the hotels state with the response data
     } catch (error) {
-      console.error(error);
+      console.error(error); // logging any errors that occur during the request
     }
   };
 
-  const fetchRestaurants = async (city) => {
+  const fetchRestaurants = async (city) => { // defining an asynchronous function called fetchRestaurants to fetch restaurants data
     try {
-      const response = await api.get(`/restaurant/${city}`);
-      setRestaurants(response.data.data);
+      const response = await api.get(`/restaurant/${city}`); // making a GET request to the restaurants endpoint with the city parameter
+      setRestaurants(response.data.data); // setting the restaurants state with the response data
     } catch (error) {
-      console.error(error);
+      console.error(error); // logging any errors that occur during the request
     }
   };
 
-  const fetchAttractions = async (city) => {
+  const fetchAttractions = async (city) => { // defining an asynchronous function called fetchAttractions to fetch attractions data
     try {
-      const response = await api.get(`/attractions/${city}/tourist_attraction`);
-      setAttractions(response.data.data);
+      const response = await api.get(`/attractions/${city}/tourist_attraction`); // making a GET request to the attractions endpoint with the city and tourist_attraction parameters
+      setAttractions(response.data.data); // setting the attractions state with the response data
     } catch (error) {
-      console.error(error);
+      console.error(error); // logging any errors that occur during the request
     }
   };
-  
+
+    // define functions to render the hotel, restaurant, and attraction data
 
   const renderHotels = () => {
     return hotels.map((hotel, index) => (
