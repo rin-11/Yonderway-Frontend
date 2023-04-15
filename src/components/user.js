@@ -8,15 +8,22 @@ const Usernav = (props) => {
   return (
     <nav className='usernav'>
         <Link to='/register'>
-            <button id="register">Register</button>
+            <button id="user">
+            <img src="https://d1k5j68ob7clqb.cloudfront.net/processed/meta/D3s78Z14t2GB91wqCr.png"  id="icon2"></img>
+              Register</button>
         </Link>
 
         <Link to='/login'>
-            <button id="login">Login</button>
+            <button id="user">
+            <img src="https://cdn-icons-png.flaticon.com/512/54/54874.png"  id="icon2"></img>
+              Login</button>
         </Link>
 
         <Link to='/wishlist'>
-            <div id="wishlist">User Wishlist</div>
+            <div id="wishlist">
+            <img src="https://freeiconshop.com/wp-content/uploads/edd/heart-outline.png"  id="icon2"></img>
+
+              User Wishlist</div>
         </Link> <br/>
     </nav>
   );

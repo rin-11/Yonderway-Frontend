@@ -35,8 +35,8 @@ const Main = (props) => {
   const renderDestinations = () => {
     // Map through the destinations array and return an image element for each destination
     return destinations.map((destination, index) => (
-      <div key={index}>
-        <img src={destination} alt="Destination" />
+      <div  className='img-main' key={index}>
+        <img src={destination} alt="Destination" className='destination'/>
       </div>
     ));
   };
