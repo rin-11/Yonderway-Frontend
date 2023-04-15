@@ -25,19 +25,21 @@ const Main = (props) => {
     }
   };
 
-  // Function to handle input change event
-  const handleInputChange = (event) => {
-    // Update the search query state with the new input value
-    setSearchQuery(event.target.value);
-  };
-
-  // Function to render destination images
-  const renderDestinations = () => {
-    // Map through the destinations array and return an image element for each destination
-    return destinations.map((destination, index) => (
-      <div key={index}>
-        <img src={destination} alt="Destination" />
+  // Function to render restaurant data
+  const renderRestaurants = () => {
+    // Map through the restaurants array and return a div element with restaurant details for each restaurant
+    return restaurants.map((restaurant, index) => (
+      <>
+      <div className='activity_container' key={index}>
+        {/* Check if a photo is available for the restaurant, and render it if it exists */}
+        {restaurant.photo ? (
+          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" className='activities' />
+        ) : null}
+       <h2>{restaurant.name}</h2>
+        <p>Rating: {restaurant.rating}</p>
+        {/* <p>Description: {restaurant.description}</p> */}
       </div>
+      </>
     ));
   };
 

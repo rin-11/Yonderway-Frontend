@@ -1,13 +1,19 @@
 /* Google font */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Permanent+Marker&family=Zeyada&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+
 
 .App {
 text-align: center;
+
 
 }
 
 body {
   background-color: whitesmoke;
+  font-family: 'Dongle', sans-serif;
+  font-size: 25px;
+
 }
 
 /* 
@@ -152,10 +158,18 @@ a {
   color:black;
 }
 
+.activity_container{
+  display: inline-block;
+  width: 600px;
+  height: 500px;
+  margin-bottom: 3em;
+  line-height: 0.4;
+
+}
+
 .activities {
   width: 500px;
   height: 400px;
   opacity: 0.;
-  margin: 2px;
   border-radius: 10px;
 }
