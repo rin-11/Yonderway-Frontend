@@ -1,14 +1,11 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 
-//Bella creates hide and show feature using toggle button
-//Bella renders images and title of different things to do by importing from ./index.js
-
 const Header = (props) => {
   const loc = useLocation();
   const searchQuery = new URLSearchParams(loc.search).get('city');
 
-  if (loc.pathname === '/') {
+  if (loc.pathname === '/' || loc.pathname.startsWith('/city/')) {
     return null;
   }
   else {
