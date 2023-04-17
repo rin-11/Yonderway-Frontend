@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 
 //IMPORT COMPONENTS
   import Header from './components/header';
-  import Usernav from './components/usernav';
+  import Usernav from './components/user';
   import Footer from './components/footer'
   import Title from "./components/title";
 

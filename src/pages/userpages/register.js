@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
-import Usernav from '../../components/usernav';
+import Usernav from '../../components/user';
 import { Link } from 'react-router-dom';
 
 
