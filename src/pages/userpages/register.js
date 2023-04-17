@@ -1,56 +1,61 @@
-import {useState} from 'react'
-import { Link } from "react-router-dom";
+import {useState} from 'react';
+import {Routes, Route} from 'react-router-dom';
+import Usernav from '../../components/user';
+import { Link } from 'react-router-dom';
+
 
 //Jess to style 
 
 const Register = (props) => {
-  
-  const [newUser, setNewUser] = useState({
-    username: "",
-    password: "",
-});
 
-// handleChange function for form
-const handleChange = (event) => {
-    setNewUser({...newUser, [event.target.username]: event.target.value})
-}
-
-// handleSubmit function for form
-const handleSubmit = (event) => {
-    event.preventDefault()
-    props.createUser(newUser)
-    setNewUser({
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [newUser, setNewUser] = useState([false]);
+    const [newForm, setNewForm] = useState({
+      username: "",
+      password: ""
+  })
+      // handleChange function 
+      const handleChange = (event) => {
+        setNewForm({...newForm, [event.target.name]: event.target.value})
+    }
+    const handleSubmit = (event) => {
+      event.preventDefault()
+      props.createUser(newForm)
+      setNewForm({
         username: "",
-        password: "",
-    })
-}
-  
+        password: ""
+      })
+  }
+
   return (
   
     <section>
-        <form onSubmit={handleSubmit}>
-
+      <form action="/register" method="POST">
+      <div className='username-input'>
           <input
             type="text"
-            value={newUser.username}
+            value={newForm.username}
             name="username"
-            placeholder="username"
+            placeholder="enter username"
             onChange={handleChange}
           />
-          
+          </div>
+          <br></br>
+          <div className='password-input'>
           <input
             type="text"
-            value={newUser.password}
+            value={newForm.password}
             name="password"
-            placeholder="password"
+            placeholder="enter password"
             onChange={handleChange}
           />
-
+          </div>
+          <br></br>
           <input type="submit" value="Register" />
-        </form>
-
+          </form>
       </section>
       
-)}
+)};
 
 export default Register;
