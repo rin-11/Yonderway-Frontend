@@ -26,6 +26,7 @@ function App() {
     <>
       <div className="App">
 
+    <section className="header-background">
         <Usernav />
         <Title/>
         <br></br>
@@ -33,6 +34,7 @@ function App() {
         <Header />
 
         <br></br>
+     </section>
 
         <Routes>
 
@@ -51,9 +53,11 @@ function App() {
         </Routes>
 
         <br></br>
+        </div>
 
+        <div className="footer">
         <Footer />
-      </div>
+        </div>
     </>
   );
 }
