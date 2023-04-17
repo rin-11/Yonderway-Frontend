@@ -1,12 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import {Link, Routes, Route} from 'react-router-dom'
+import Register from '../pages/userpages/register';
+import Login from '../pages/userpages/login';
 
 //Account: Create account and sign in 
 //Once the user creates an account: add conditional to hide sigin/create acount buttons and replace with login /log out buttons 
 
 const Usernav = (props) => {
+  const [user, setUser] = useState(null)
+  const URL = "http://localhost:3000/register/"
+
+  const getUser = async() => {
+    const response = await fetch(URL)
+    const data = await response.json()
+    setUser(data.data)
+}
+  const createUser = async (user) => {
+    await fetch(URL, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    getUser();
+  };
+  
+  useEffect(() => {
+    getUser()
+  }, [])
+
   return (
     <nav className='usernav'>
+      {/* <Routes>
+        <Route path='/register'
+        element={<Register user={user}
+        createUser={createUser}/>}/>
+      </Routes> */}
         <Link to='/register'>
             <button id="user">
             <img src="https://d1k5j68ob7clqb.cloudfront.net/processed/meta/D3s78Z14t2GB91wqCr.png"  id="icon2"></img>
