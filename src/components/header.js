@@ -11,13 +11,13 @@ const Header = (props) => {
   else {
     return (
       <>
-        <div className="nav-header">
-          <ul className="header">
-            <Link to={`/attractions?city=${searchQuery}`}>
+        <section className="nav-header">
+          {/* <ul className="header"> */}
+            <Link to={`/attractions?city=${searchQuery}`} className="category1">
               <img src="https://static.thenounproject.com/png/4538455-200.png" id="icon" />
               <h3 className="category">Attractions</h3>
             </Link>
-            <Link to={`/hotels?city=${searchQuery}`}>
+            <Link to={`/hotels?city=${searchQuery}`} className="category1">
               <img src="https://static.thenounproject.com/png/1650638-200.png" id="icon" />
               <h3 className="category">Hotels</h3>
             </Link>
@@ -25,8 +25,8 @@ const Header = (props) => {
               <img src="https://static.thenounproject.com/png/1062711-200.png" id="icon" />
               <h3 className="category">Restaurants</h3>
             </Link>
-          </ul>
-        </div>
+          {/* </ul> */}
+        </section>
       </>
     );
   }

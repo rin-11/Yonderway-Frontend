@@ -10,11 +10,16 @@ const Footer = (props) => {
   }
   else {
     return (
-      <div className="nav">
+      <>
+      <section className="nav">
           <Link to="/">
-            <div>Back to Main</div>
+            <div className="main-footer">MAIN PAGE</div>
           </Link>
-      </div>
+         <Link to="/wishlist">
+           <div className="wishlist-footer">WISHLIST</div>
+         </Link>
+     </section>
+     </>
     );
   }
   

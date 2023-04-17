@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import api from '../utils/api';
 import { Link } from 'react-router-dom';
 
+
 const Main = (props) => {
   // Declare state variables for search query and destinations
   const [searchQuery, setSearchQuery] = useState('');
@@ -43,9 +44,10 @@ const Main = (props) => {
 
   return (
     <div className='container'>
+      <h1 className='explore'>Explore Destinations</h1>
       <div className='search-bar'>
         {/* Input field for entering the destination city */}
-        <input type="text" placeholder="Enter your destination" value={searchQuery} onChange={handleInputChange} />
+        <input type="text" placeholder="Enter your destination by City" value={searchQuery} onChange={handleInputChange} />
         {/* Link component from react-router-dom to navigate to the city page with the searchQuery as a URL parameter */}
         <Link to={`/city/${searchQuery}`}><button id="searchbttn">SEARCH</button></Link>
       </div>
