@@ -4,18 +4,21 @@
 
 .App {
 text-align: center;
+ min-height: 100vh;
+}
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 body {
   background-color: whitesmoke;
   font-family: 'Dongle', sans-serif;
   font-size: 25px;
-
 }
-
-/* 
-setting top, left and right to 0 to position the nav at the top */
 
 
 h1 {
@@ -30,14 +33,6 @@ nav {
 }
 
 
-ul {
-  list-style: none;
-  margin: 50;
-  padding: 0;
-  display: flex;
-  justify-content: space-evenly;
-}
-
 
 .usernav{
   display: flex;
@@ -45,6 +40,7 @@ ul {
   justify-content: flex-end;
   align-items: center;
   margin: 0px;
+  margin-bottom: -20px;
   height: 80px;
 }
 
@@ -64,6 +60,7 @@ ul {
   font-size: 30px;
   font-weight: 300;
   margin-right: 15px;
+  color: white;
 }
 
 
@@ -75,13 +72,23 @@ img.destination {
   width: 900px;
   height: 700px;
   opacity: 0.;
-  margin: 2px;
+  margin: 0.5px;
+  margin-bottom: -14px;
   border-radius: 10px;
 }
 
-.container {
-  position: relative;
+img.destination:hover {
+  opacity: 0.8;
 }
+
+.explore {
+  text-align: left;
+  font-size: 40px;
+  margin: -30px 0 0 50px;
+}
+/* .container {
+  position: relative;
+} */
 
 
 .search-bar {
@@ -89,25 +96,27 @@ img.destination {
   top:50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 30%;
   max-width: 600px;
   background-color: white;
   opacity: 0.9;
-  padding: 18px;
+  padding: 5px;
   border-radius: 30px;
+  margin-top: -345px;
 }
 
 .search-bar input[type="text"] {
   width: 70%;
-  padding: 20px;
+  padding: 12px;
   border: none;
   border-radius: 5px;
   outline: none;
   background-color: black;
+  color: white;
 }
 
 ::placeholder {
-  color: white;
+  color: grey;
 }
 
 button#user {
@@ -117,8 +126,8 @@ button#user {
   border-radius: 10px;
   box-shadow: white;
   border: none;
-  box-shadow: 3px 3px 10px #c5c5c5,
-  -1px -1px 10px #ffffff;
+  box-shadow: 3px 3px 10px #c5c5c5;
+  /* -1px -1px 10px #ffffff; */
   padding: 4px;
   width: 110px;
   font-size: 15px;
@@ -135,19 +144,18 @@ button {
 
 
 button#searchbttn{
-  width: 20%;
-  padding: 15px;
+  width: 15%;
+  padding: 12px;
   border-radius: 20px;
   cursor: pointer;
-  margin: 10px;
 }
 
 
 
 .name {
-  font-size: 70px;
+  font-size: 75px;
   margin-top: 0px;
-  margin-bottom: 0;
+  margin-bottom: 0px;
   text-decoration: none;
   font-family: 'Caveat', cursive;
   font-family: 'Permanent Marker', cursive;
@@ -259,10 +267,49 @@ a {
 .category {
   margin-top: -15px;
   margin-bottom: 0px;
-  color:  #5a5958;
+  color: black;
+  font-size: 30px;
+  font-weight: lighter;
 }
 
 .category-show {
-  border-top: 2px solid #5a5958;
   margin-top: 35px;
+}
+
+section.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:  #5a5958;
+  font-size: 30px;
+  font-family: 'Dongle', sans-serif;
+}
+
+.wishlist-footer {
+  margin-left: 25px;
+}
+
+.wishlist-footer:hover, .main-footer:hover, .category:hover{
+  font-weight: bolder;
+}
+
+section.nav-header{
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.header-background {
+  background-image: url("https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  height: 280px;
+  margin-bottom: 50px;
+}
+
+a.category1 {
+  margin-right: 200px;
 }
