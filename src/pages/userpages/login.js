@@ -5,51 +5,51 @@ import { Link } from "react-router-dom";
 
 const Login = (props) => {
   
-  const [findUser, setfindUser] = useState({
+  const [newForm, setNewForm] = useState({
     username: "",
-    password: "",
-});
+    password: ""
+})
 
-// handleChange function for form
-const handleChange = (event) => {
-    setfindUser({...findUser, [event.target.username]: event.target.value})
-}
-
-// handleSubmit function for form
-const handleSubmit = (event) => {
+    const handleChange = (event) => {
+      setNewForm({...newForm, [event.target.name]: event.target.value})
+  }
+  const handleSubmit = (event) => {
     event.preventDefault()
-    props.createUser(findUser)
-    setfindUser({
-        username: "",
-        password: "",
+    props.findUser(newForm)
+    setNewForm({
+      username: "",
+      password: ""
     })
 }
   
   return (
   
     <section>
-        <form onSubmit={handleSubmit}>
-
+      <form action="/login" method="POST">
+      <div className='username-input'>
           <input
             type="text"
-            value={findUser.username}
+            value={newForm.username}
             name="username"
-            placeholder="username"
+            placeholder="enter username"
             onChange={handleChange}
           />
-          
+          </div>
+          <br></br>
+          <div className='password-input'>
           <input
             type="text"
-            value={findUser.password}
+            value={newForm.password}
             name="password"
-            placeholder="password"
+            placeholder="enter password"
             onChange={handleChange}
           />
-
+          </div>
+          <br></br>
           <input type="submit" value="Login" />
-        </form>
-
+          </form>
       </section>
+      
       
 )}
 

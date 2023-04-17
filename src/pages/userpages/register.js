@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
-import Usernav from '../../components/user';
+import Usernav from '../../components/usernav';
 import { Link } from 'react-router-dom';
 
 
@@ -11,18 +11,18 @@ const Register = (props) => {
     // const [username, setUsername] = useState('');
     // const [password, setPassword] = useState('');
     // const [newUser, setNewUser] = useState([false]);
-    const [newUser, setNewUser] = useState({
+    const [newForm, setNewForm] = useState({
       username: "",
       password: ""
   })
       // handleChange function 
       const handleChange = (event) => {
-        setNewUser({...newUser, [event.target.name]: event.target.value})
+        setNewForm({...newForm, [event.target.name]: event.target.value})
     }
     const handleSubmit = (event) => {
       event.preventDefault()
-      props.createUser(newUser)
-      setNewUser({
+      props.createUser(newForm)
+      setNewForm({
         username: "",
         password: ""
       })
@@ -31,11 +31,11 @@ const Register = (props) => {
   return (
   
     <section>
-      <form action="/users/register" method="POST">
+      <form action="/register" method="POST">
       <div className='username-input'>
           <input
             type="text"
-            value={newUser.username}
+            value={newForm.username}
             name="username"
             placeholder="enter username"
             onChange={handleChange}
@@ -45,7 +45,7 @@ const Register = (props) => {
           <div className='password-input'>
           <input
             type="text"
-            value={newUser.password}
+            value={newForm.password}
             name="password"
             placeholder="enter password"
             onChange={handleChange}
