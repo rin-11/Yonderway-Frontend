@@ -47,6 +47,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />;
 
           <Route path="/city/:cityId" element={<City />} />; // Add the route for the city page
+          <Route path="/activity" element={<Activity />} />; 
 
         </Routes>
 
