@@ -69,11 +69,15 @@ const City = (props) => {
   const renderHotels = () => {
     return hotels.map((hotel, index) => (
       <div className='activity_container' key={index}>
-        <Link to={`/activity`}>
+        {/* <Link to={`/activity`}>  */}
+        <button className='add-wish'> 
+        <img src='https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png' id='star1'></img> 
+        </button>
+
           {hotel.photo ? (
             <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${hotel.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Hotel" className='activities' />
           ) : null}
-        </Link>
+        {/* </Link> */}
         <div>
           <h2 className='act-name'>{hotel.name}</h2>
           <div className='rating'>

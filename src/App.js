@@ -10,7 +10,6 @@ import Title from "./components/title";
 
 // IMPORT PAGES 
 import Main from './pages/main';
-import Activity from './pages/activity';
 import Register from './pages/userpages/register';
 import Login from './pages/userpages/login';
 import Wishlist from './pages/userpages/wishlist';
@@ -49,7 +48,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />;
 
           <Route path="/city/:cityId" element={<City />} />; // Add the route for the city page
-          <Route path="/activity" element={<Activity />} />; 
+      
 
         </Routes>
 
@@ -64,3 +63,4 @@ function App() {
 }
 
 export default App;
+

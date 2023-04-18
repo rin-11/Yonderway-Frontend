@@ -50,9 +50,6 @@ const Wishlist = (props) => {
    };
 
 
-
-
-
     return (
         <div>
         {pageIcons()}
