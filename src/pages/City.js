@@ -94,6 +94,11 @@ const City = (props) => {
   const renderRestaurants = () => {
     return restaurants.map((restaurant, index) => (
       <div className='activity_container' key={index}>
+
+        <button className='add-wish'> 
+        <img src='https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png' id='star1'></img> 
+        </button>
+
         {restaurant.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" className='activities' />
         ) : null}
@@ -112,6 +117,11 @@ const City = (props) => {
   const renderAttractions = () => {
     return attractions.map((attraction, index) => (
       <div className='activity_container' key={index}>
+
+        <button className='add-wish'> 
+        <img src='https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png' id='star1'></img> 
+        </button>
+
         {attraction.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Attraction" className='activities' />
         ) : null}
