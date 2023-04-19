@@ -12,7 +12,6 @@ const Header = (props) => {
     return (
       <>
         <section className="nav-header">
-          {/* <ul className="header"> */}
             <Link to={`/attractions?city=${searchQuery}`} className="category1">
               <img src="https://static.thenounproject.com/png/4538455-200.png" id="icon" />
               <h3 className="category">Attractions</h3>
@@ -25,7 +24,6 @@ const Header = (props) => {
               <img src="https://static.thenounproject.com/png/1062711-200.png" id="icon" />
               <h3 className="category">Restaurants</h3>
             </Link>
-          {/* </ul> */}
         </section>
       </>
     );
