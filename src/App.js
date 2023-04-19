@@ -49,7 +49,6 @@ function App() {
 
           <Route path="/city/:cityId" element={<City />} />; // Add the route for the city page
       
-
         </Routes>
 
         <br></br>

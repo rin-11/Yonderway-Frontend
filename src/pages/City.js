@@ -65,26 +65,48 @@ const City = (props) => {
     setShowAttractions(!showAttractions);
   }
 
+  const toggleHotelWish = (index) => {
+    const newHotels = [...hotels];
+    newHotels[index].isWished = !newHotels[index].isWished;
+    setHotels(newHotels);
+  };
+
+  const toggleRestaurantWish = (index) => {
+    const newRestaurants = [...restaurants];
+    newRestaurants[index].isWished = !newRestaurants[index].isWished;
+    setRestaurants(newRestaurants);
+  };
+
+  const toggleAttractionWish = (index) => {
+    const newAttractions = [...attractions];
+    newAttractions[index].isWished = !newAttractions[index].isWished;
+    setAttractions(newAttractions);
+  };
+
   // Render hotels as JSX elements
   const renderHotels = () => {
     return hotels.map((hotel, index) => (
       <div className='activity_container' key={index}>
-        {/* <Link to={`/activity`}>  */}
-        <button className='add-wish'> 
-        <img src='https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png' id='star1'></img> 
+        <button className='add-wish' onClick={() => toggleHotelWish(index)}>
+        <img
+            src={
+              hotel.isWished
+                ? 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png'
+                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/OOjs_UI_icon_heart.svg/2048px-OOjs_UI_icon_heart.svg.png'
+            }
+            id='star1'
+            alt='Add to wishlist'
+          />
         </button>
-
-          {hotel.photo ? (
-            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${hotel.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Hotel" className='activities' />
-          ) : null}
-        {/* </Link> */}
+        {hotel.photo ? (
+          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${hotel.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Hotel" className='activities' />
+        ) : null}
         <div>
           <h2 className='act-name'>{hotel.name}</h2>
           <div className='rating'>
             <img src='https://cdn-icons-png.flaticon.com/512/56/56786.png' id='star'></img> <h3 className='rating-num'>{hotel.rating}</h3>
           </div>
         </div>
-        {/* <p>Rating: {hotel.rating}</p> */}
         <p className='address'>Address: {hotel.description}</p>
       </div>
     ));
@@ -94,11 +116,17 @@ const City = (props) => {
   const renderRestaurants = () => {
     return restaurants.map((restaurant, index) => (
       <div className='activity_container' key={index}>
-
-        <button className='add-wish'> 
-        <img src='https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png' id='star1'></img> 
+        <button className='add-wish' onClick={() => toggleRestaurantWish(index)}>
+        <img
+            src={
+              restaurant.isWished
+                ? 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png'
+                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/OOjs_UI_icon_heart.svg/2048px-OOjs_UI_icon_heart.svg.png'
+            }
+            id='star1'
+            alt='Add to wishlist'
+          />
         </button>
-
         {restaurant.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" className='activities' />
         ) : null}
@@ -117,11 +145,17 @@ const City = (props) => {
   const renderAttractions = () => {
     return attractions.map((attraction, index) => (
       <div className='activity_container' key={index}>
-
-        <button className='add-wish'> 
-        <img src='https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png' id='star1'></img> 
+        <button className='add-wish' onClick={() => toggleAttractionWish(index)}>
+        <img
+            src={
+              attraction.isWished
+                ? 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png'
+                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/OOjs_UI_icon_heart.svg/2048px-OOjs_UI_icon_heart.svg.png'
+            }
+            id='star1'
+            alt='Add to wishlist'
+          />
         </button>
-
         {attraction.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Attraction" className='activities' />
         ) : null}
