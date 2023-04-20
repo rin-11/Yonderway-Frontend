@@ -2,6 +2,7 @@ import {useState} from 'react'
 import { Link } from "react-router-dom";
 import Usernav from '../../components/user';
 import axios from 'axios';
+import api from '../../utils/api';
 
 
 //Jess to style 
@@ -24,7 +25,7 @@ const Register = (props) => {
         },
       };
       setLoading(true);
-      const { data } = await axios.post('/api/users', {
+      const { data } = await api.post('/api/users', {
         username, password
       }, config)
       // store user data locally as string

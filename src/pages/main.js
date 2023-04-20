@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import api from '../utils/api';
 import { Link } from 'react-router-dom';
 
+
 const Main = (props) => {
   // Declare state variables for search query and destinations
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,7 +36,7 @@ const Main = (props) => {
   const renderDestinations = () => {
     // Map through the destinations array and return an image element for each destination
     return destinations.map((destination, index) => (
-      <div  className='img-main' key={index}>
+      <div className='img-main' key={index}>
         <img src={destination} alt="Destination" className='destination'/>
       </div>
     ));
@@ -43,11 +44,12 @@ const Main = (props) => {
 
   return (
     <div className='container'>
+      <h1 className='explore'>Explore Destinations</h1>
       <div className='search-bar'>
         {/* Input field for entering the destination city */}
-        <input type="text" placeholder="Enter your destination by city" value={searchQuery} onChange={handleInputChange} />
-        {/* Link component from react-router-dom to navigate to the restaurants page with the searchQuery as a URL parameter */}
-        <Link to={`/restaurants?city=${searchQuery}`}><button id="searchbttn">SEARCH</button></Link>
+        <input type="text" placeholder="Enter your destination by City" value={searchQuery} onChange={handleInputChange} />
+        {/* Link component from react-router-dom to navigate to the city page with the searchQuery as a URL parameter */}
+        <Link to={`/city/${searchQuery}`}><button id="searchbttn">SEARCH</button></Link>
       </div>
       {/* Render destination images only if the destinations array has data */}
       {destinations.length > 0 ? renderDestinations() : null}

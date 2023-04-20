@@ -22,11 +22,17 @@ const Usernav = (props) => {
               Login</button>
         </Link>
 
+        <Link to='/'>
+            <button id="user">
+            <img src="https://cdn-icons-png.flaticon.com/512/154/154347.png"  id="icon2"></img>
+              Logout </button>
+        </Link>
+
         <Link to='/wishlist'>
-            <div id="wishlist">
+            <div className="wishlist">
             <img src="https://freeiconshop.com/wp-content/uploads/edd/heart-outline.png"  id="icon2"></img>
 
-              User Wishlist</div>
+              <h1 className="list">Wishlist</h1></div>
         </Link> <br/>
     </nav>
   );
