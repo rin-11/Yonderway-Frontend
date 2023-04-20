@@ -2,6 +2,8 @@ import {useState} from 'react'
 import { Link } from "react-router-dom";
 import Usernav from '../../components/user';
 import axios from 'axios';
+import api from '../../utils/api';
+
 
 //Jess to style 
 
@@ -24,7 +26,7 @@ const submitHandler = async (e) => {
       };
       setLoading(true) // while request is being made 
 
-      const { data } = await axios.post('/api/users/login', {
+      const { data } = await api.post('/api/users/login', {
         username, password
       }, config );
       // store user data locally as string
