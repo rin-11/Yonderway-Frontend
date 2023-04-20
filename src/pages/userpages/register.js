@@ -32,34 +32,55 @@ const Register = (props) => {
   }
 
   return (
+    <>
+    <section className='grid-register'>
+      <div className='grid-welcome'>
+      <h1>Welcome to Yonderway</h1>
+      <p>YonderWay, the path less trod,
+          A journey to the unknown abroad.
+          With open eyes and open heart,
+          The world unfolds, a work of art.
+          Amidst the mountains, fields, and streams,
+          The traveler roams and freely dreams.
+          Of all the wonders yet to see,
+          And all the places yet to be.
+          YonderWay, the call to roam,
+          To leave behind what was once known.
+          And venture forth to find a way,
+          To live a life, untamed and free.</p>
+          <h4>Create an account to continue access</h4>
+      </div>
 
-    <section>
+      <div className='grid-user'>
         <form onSubmit={handleSubmit}>
       {/* <form action="/register" method="POST"> */}
-        <div className='username-input'>
-          <input
+        <div>
+          <h1 className='user-pw'>Username</h1><br/>
+          <input className='user-input'
             type="text"
             value={newForm.username}
             name="username"
-            placeholder="enter username"
+            placeholder="Enter username"
             onChange={handleChange}
           />
         </div>
         <br></br>
-        <div className='password-input'>
-          <input
+        <div>
+        <h1 className='user-pw'>Password</h1><br/>
+          <input className='user-input'
             type="text"
             value={newForm.password}
             name="password"
-            placeholder="enter password"
+            placeholder="Enter password"
             onChange={handleChange}
           />
         </div>
         <br></br>
-        <input type="submit" value="Register" />
+        <input className="user-pw-bttn" type="submit" value="Register" />
       </form>
+      </div>
     </section>
-
+    </>
   )
 };
 

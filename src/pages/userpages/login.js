@@ -25,10 +25,29 @@ const Login = (props) => {
   
   return (
   
-    <section>
+    <section className='grid-register'>
+      <div className='grid-welcome'>
+      <h1>Hello Again!</h1>
+      <p>YonderWay, the path less trod,
+          A journey to the unknown abroad.
+          With open eyes and open heart,
+          The world unfolds, a work of art.
+          Amidst the mountains, fields, and streams,
+          The traveler roams and freely dreams.
+          Of all the wonders yet to see,
+          And all the places yet to be.
+          YonderWay, the call to roam,
+          To leave behind what was once known.
+          And venture forth to find a way,
+          To live a life, untamed and free.</p>
+          <h4>Sign in to continue access</h4>
+      </div>
+
+      <div className='grid-user'>
       <form action="/login" method="POST">
       <div className='username-input'>
-          <input
+      <h1 className='user-pw'>Username</h1><br/>
+          <input className='user-input'
             type="text"
             value={newForm.username}
             name="username"
@@ -38,7 +57,8 @@ const Login = (props) => {
           </div>
           <br></br>
           <div className='password-input'>
-          <input
+          <h1 className='user-pw'>Password</h1><br/>
+          <input className='user-input'
             type="text"
             value={newForm.password}
             name="password"
@@ -47,8 +67,9 @@ const Login = (props) => {
           />
           </div>
           <br></br>
-          <input type="submit" value="Login" />
+          <input className="user-pw-bttn" type="submit" value="Login" />
           </form>
+      </div>
       </section>
       
       
