@@ -29,10 +29,6 @@ function App() {
         <Usernav />
         <Title/>
         <br></br>
-
-        <Header />
-
-        <br></br>
      </section>
 
         <Routes>
