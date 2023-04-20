@@ -1,66 +1,74 @@
-import { useState } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import {useState} from 'react'
+import { Link } from "react-router-dom";
 import Usernav from '../../components/user';
+import axios from 'axios';
+import api from '../../utils/api';
+
 
 //Jess to style 
 
 const Register = (props) => {
+  // create states to hold username and password
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  // create state for login errors and loading
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [newUser, setNewUser] = useState([false]);
-  const [newForm, setNewForm] = useState({
-    username: "",
-    password: ""
-  })
-
-  // handleChange function 
-  const handleChange = (event) => {
-    setNewForm({ ...newForm, [event.target.name]: event.target.value })
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    props.createUser(newForm)
-    setNewForm({
-      username: "",
-      password: ""
-    })
-
-    // Call the callback function to toggle the heart image
-    props.toggleAddWish();
-  }
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    // try/catch to call API
+    try {
+      const config = {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      };
+      setLoading(true);
+      const { data } = await api.post('/api/users', {
+        username, password
+      }, config)
+      // store user data locally as string
+      localStorage.setItem('userInfo',JSON.stringify(data)); 
+      setLoading(false) // once request is complete
+  } catch (error) {
+    setError(error.response.data.message)
+    }
+  };
 
   return (
-
+  
     <section>
-        <form onSubmit={handleSubmit}>
-      {/* <form action="/register" method="POST"> */}
-        <div className='username-input'>
+      <h1>Register New User</h1>
+      <form onSubmit={submitHandler}>
+      <div className='username-input'>
+        <h4>Username:</h4>
           <input
             type="text"
-            value={newForm.username}
+            value={username}
             name="username"
             placeholder="enter username"
-            onChange={handleChange}
+            onChange={(e) => setUsername(e.target.value)}
+            // onChange={handleChange}
           />
-        </div>
-        <br></br>
-        <div className='password-input'>
+          </div>
+          <br></br>
+          <div className='password-input'>
+          <h4>Password:</h4>
           <input
             type="text"
-            value={newForm.password}
+            value={password}
             name="password"
             placeholder="enter password"
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
+            // onChange={handleChange}
           />
-        </div>
-        <br></br>
-        <input type="submit" value="Register" />
-      </form>
-    </section>
-
-  )
-};
+          </div>
+          <br></br>
+          <input type="submit" value="Register" />
+          </form>
+      </section>
+      
+)};
 
 export default Register;
