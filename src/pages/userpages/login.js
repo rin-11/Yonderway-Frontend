@@ -1,27 +1,42 @@
 import {useState} from 'react'
 import { Link } from "react-router-dom";
 import Usernav from '../../components/user';
+import axios from 'axios';
+
 
 //Jess to style 
 
+
 const Login = (props) => {
   
-  const [newForm, setNewForm] = useState({
-    username: "",
-    password: ""
-})
-
-    const handleChange = (event) => {
-      setNewForm({...newForm, [event.target.name]: event.target.value})
-  }
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    props.findUser(newForm)
-    setNewForm({
-      username: "",
-      password: ""
-    })
-}
+  // create states to hold username and password
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  // create state for login errors and loading
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
+  
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const config = {
+        headers: {
+          'Content-type':'application/json'
+          }
+        };
+        setLoading(true) // while request is being made 
+  
+        const { data } = await axios.post('/api/users/login', {
+          username, password
+        }, config );
+        // store user data locally as string
+        localStorage.setItem('userInfo',JSON.stringify(data)); 
+        setLoading(false) // once request is complete
+    } catch (error) {
+      setError(error.response.data.message)
+    }
+    // console.log(username, password) // test
+  };
   
   return (
   
@@ -44,34 +59,35 @@ const Login = (props) => {
       </div>
 
       <div className='grid-user'>
-      <form action="/login" method="POST">
+      <form onSubmit={submitHandler}>
       <div className='username-input'>
       <h1 className='user-pw'>Username</h1><br/>
           <input className='user-input'
             type="text"
-            value={newForm.username}
+            value={username}
             name="username"
             placeholder="enter username"
-            onChange={handleChange}
+            onChange={(e) => setUsername(e.target.value)}
+            // onChange={handleChange}
           />
           </div>
           <br></br>
           <div className='password-input'>
           <h1 className='user-pw'>Password</h1><br/>
           <input className='user-input'
-            type="text"
-            value={newForm.password}
-            name="password"
-            placeholder="enter password"
-            onChange={handleChange}
+             type="text"
+             value={password}
+             name="password"
+             placeholder="enter password"
+             onChange={(e) => setPassword(e.target.value)}
+             // onChange={handleChange}
           />
           </div>
           <br></br>
           <input className="user-pw-bttn" type="submit" value="Login" />
           </form>
       </div>
-      </section>
-      
+      </section> 
       
 )}
 
