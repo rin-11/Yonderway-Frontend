@@ -28,6 +28,7 @@ import axios from 'axios';
     }).then(res => res.json())
     .then(resJson => {
       console.log(resJson)
+      localStorage.setItem('userInfo',JSON.stringify(resJson)); 
       })
     };
 

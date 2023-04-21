@@ -24,9 +24,11 @@ const Register = (props) => {
       headers: {
         'Content-Type': 'application/json'
       }
+      
     }).then(res => res.json())
     .then(resJson => {
       console.log(resJson)
+      localStorage.setItem('userInfo',JSON.stringify(resJson)); 
     })
   };
 

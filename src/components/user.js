@@ -23,7 +23,9 @@ const Usernav = (props) => {
         </Link>
 
         <Link to='/'>
-            <button id="user">
+            <button onClick={() => {
+              localStorage.removeItem('userInfo')
+            }}>
             <img src="https://cdn-icons-png.flaticon.com/512/154/154347.png"  id="icon2"></img>
               Logout </button>
         </Link>
