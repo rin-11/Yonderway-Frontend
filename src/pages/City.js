@@ -153,14 +153,14 @@ const City = (props) => {
          {showPopUp && (
           <div className='popup-container'>
           <div className='popup-box'>
-          <h1>Register or Login to continue </h1>
+          <h1 className='popup-header'>Register or Login to continue </h1>
           <Link to='/register'>
-          <button>Register</button>
+          <button className='pop-bttn'>Register</button>
           </Link>
           <Link to='/login'>
-          <button>Login</button>
+          <button className='pop-bttn'>Login</button>
           </Link>
-          <button className="popup-close" onClick={handleCloseBttn}>Close</button>
+          <button className="popup-close" onClick={handleCloseBttn}>X</button>
           </div>
           </div>
         ) }
@@ -255,14 +255,15 @@ const City = (props) => {
           {showPopUp && (
           <div className='popup-container'>
           <div className='popup-box'>
-          <h1>Register or Login to continue </h1>
-          <Link to='/register'>
+          <h1 className='popup-header'>Register or Login to access your wishlist with a Yonderway account </h1>
+          <Link to='/register' target="blank">
           <button>Register</button>
           </Link>
           <Link to='/login'>
           <button>Login</button>
           </Link>
           <button className="popup-close" onClick={handleCloseBttn}>Close</button>
+          <h5>Sign up, it's free!</h5>
           </div>
           </div>
         ) }

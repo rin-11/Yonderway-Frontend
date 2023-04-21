@@ -441,8 +441,32 @@ p {
 }
 
 .popup-box {
-  max-width: 350px;
+  max-width: 300px;
+  padding: 25px;
   text-align: center;
-  border: solid grey;
+  border: 1px solid grey;
   background-color: white;
+}
+
+.popup-header {
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.pop-bttn {
+  border-radius: 5px;
+  box-shadow: white;
+  background-color: whitesmoke;
+  box-shadow: 3px 3px 10px #c5c5c5;
+  padding: 5px;
+  width: 110px;
+  font-size: 15px;
+}
+
+button.popup-close {
+  padding: 5px;
+  background-color: #ff3838;
+  border: 1px solid grey;
+  border-radius: 1px;
+
 }
