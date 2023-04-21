@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+
 // Create an instance of axios with a custom configuration
 const api = axios.create({
   // Set the base URL for all API requests using the environment variable REACT_APP_API_URL
