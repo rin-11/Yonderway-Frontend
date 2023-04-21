@@ -83,21 +83,90 @@ const City = (props) => {
     setAttractions(newAttractions);
   };
 
+
+//////////////////////////////////////////////////////////////////////
+
+   //POP-UP Notification
+       const [showPopUp, setShowPopUp] = useState(true);
+       //hide message
+       const handleCloseBttn = () => {
+           setShowPopUp(false);
+       }
+
+       //show message 
+       const handleOpen = () => {
+         setShowPopUp(true)
+       }
+    
+
+    //Show when heart is clicked 
+
+      //  <button onClick={handleOpen}>SHOW</button>
+      //   <div>
+      //   {showPopUp && (
+      //   <div className='popup-container'>
+      //   <div className='popup-box'>
+      //   <h1>Register or Login to continue </h1>
+      //   <Link to='/register'>
+      //   <button>Register</button>
+      //   </Link>
+      //   <Link to='/login'>
+      //   <button>Login</button>
+      //   </Link>
+      //   <button className="popup-close" onClick={handleCloseBttn}>Close</button>
+      //   </div>
+      //   </div>
+      //   ) }
+      //   </div>
+
+
+////////////////////////////////////////////////////////////////////////
+
+
   // Render hotels as JSX elements
   const renderHotels = () => {
     return hotels.map((hotel, index) => (
       <div className='activity_container' key={index}>
-        <button className='add-wish' onClick={() => toggleHotelWish(index)}>
+
+        {/* Display white hearts on all imgs
+             change heart to red only if the user signs in 
+             else continue without this option
+        */}
+
+        {/* will need this function once user signs in */}
+        {/* <button className='add-wish' onClick={() => toggleHotelWish(index)}>
         <img
             src={
               hotel.isWished
                 ? 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png'
-                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/OOjs_UI_icon_heart.svg/2048px-OOjs_UI_icon_heart.svg.png'
+                : 'https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png'
             }
             id='star1'
             alt='Add to wishlist'
           />
+        </button> */}
+
+        <button className='add-wish' onClick={handleOpen}>
+        <img src='https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png' id="star1"/>
         </button>
+        <div>
+         {showPopUp && (
+          <div className='popup-container'>
+          <div className='popup-box'>
+          <h1>Register or Login to continue </h1>
+          <Link to='/register'>
+          <button>Register</button>
+          </Link>
+          <Link to='/login'>
+          <button>Login</button>
+          </Link>
+          <button className="popup-close" onClick={handleCloseBttn}>Close</button>
+          </div>
+          </div>
+        ) }
+        </div>   
+
+
         {hotel.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${hotel.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Hotel" className='activities' />
         ) : null}
@@ -116,17 +185,39 @@ const City = (props) => {
   const renderRestaurants = () => {
     return restaurants.map((restaurant, index) => (
       <div className='activity_container' key={index}>
-        <button className='add-wish' onClick={() => toggleRestaurantWish(index)}>
+        {/* <button className='add-wish' onClick={() => toggleRestaurantWish(index)}>
         <img
             src={
               restaurant.isWished
                 ? 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png'
-                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/OOjs_UI_icon_heart.svg/2048px-OOjs_UI_icon_heart.svg.png'
+                : 'https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png'
             }
             id='star1'
             alt='Add to wishlist'
           />
+        </button> */}
+
+
+      <button className='add-wish' onClick={handleOpen}>
+        <img src='https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png' id="star1"/>
         </button>
+        <div>
+         {showPopUp && (
+          <div className='popup-container'>
+          <div className='popup-box'>
+          <h1>Register or Login to continue </h1>
+          <Link to='/register'>
+          <button>Register</button>
+          </Link>
+          <Link to='/login'>
+          <button>Login</button>
+          </Link>
+          <button className="popup-close" onClick={handleCloseBttn}>Close</button>
+          </div>
+          </div>
+        ) }
+        </div>   
+
         {restaurant.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" className='activities' />
         ) : null}
@@ -145,17 +236,38 @@ const City = (props) => {
   const renderAttractions = () => {
     return attractions.map((attraction, index) => (
       <div className='activity_container' key={index}>
-        <button className='add-wish' onClick={() => toggleAttractionWish(index)}>
+        {/* <button className='add-wish' onClick={() => toggleAttractionWish(index)} >
         <img
             src={
               attraction.isWished
                 ? 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png'
-                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/OOjs_UI_icon_heart.svg/2048px-OOjs_UI_icon_heart.svg.png'
+                : 'https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png'
             }
             id='star1'
             alt='Add to wishlist'
           />
+        </button> */}
+
+      <button className='add-wish' onClick={handleOpen}>
+        <img src='https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png' id="star1"/>
         </button>
+          <div>
+          {showPopUp && (
+          <div className='popup-container'>
+          <div className='popup-box'>
+          <h1>Register or Login to continue </h1>
+          <Link to='/register'>
+          <button>Register</button>
+          </Link>
+          <Link to='/login'>
+          <button>Login</button>
+          </Link>
+          <button className="popup-close" onClick={handleCloseBttn}>Close</button>
+          </div>
+          </div>
+        ) }
+        </div>   
+
         {attraction.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Attraction" className='activities' />
         ) : null}
@@ -170,19 +282,34 @@ const City = (props) => {
     ));
   };
 
+
   // Return the rendered JSX with hotels, restaurants, and attractions
   return (
-    <div >
-      <h1 className='category-show' onClick={toggleHotels}>HOTELS</h1>
+    < >
+      <h2 className='cityName'>Explore {cityId}</h2>
+      <h2  className="subheading">Select a category to continue exploring...</h2>
+      <div className="nav-header">
+      <div className="category1">
+        <img src="https://static.thenounproject.com/png/1650638-200.png" id="icon" />
+        <h1 className='category' onClick={toggleHotels}>HOTELS</h1>
+      </div>
       {/* Render hotels if there are any */}
       {showHotels && hotels.length > 0 ? renderHotels() : null}
-      <h1 onClick={toggleRestaurants}>RESTAURANTS</h1>
+      <div className="category1">
+        <img src="https://static.thenounproject.com/png/1062711-200.png" id="icon"/>
+        <h1 className="category" onClick={toggleRestaurants}>RESTAURANTS</h1>
+      </div>
       {/* Render restaurants if there are any */}
       {showRestaurants && restaurants.length > 0 ? renderRestaurants() : null}
-      <h1 onClick={toggleAttractions}>ATTRACTIONS</h1>
+
+      <div className="category1">
+        <img src="https://static.thenounproject.com/png/4538455-200.png" id="icon" />
+        <h1 className="category" onClick={toggleAttractions}>ATTRACTIONS</h1>
+      </div>
       {/* Render attractions if there are any */}
       {showAttractions && attractions.length > 0 ? renderAttractions() : null}
-    </div>
+      </div>
+    </>
   );
 };
 

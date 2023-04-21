@@ -1,65 +1,86 @@
-import { useState } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
-import Usernav from '../../components/user';
+import {useState} from 'react'
+import { Link } from "react-router-dom";
+import api from '../../utils/api';
+import axios from 'axios';
 
 //Jess to style 
 
 const Register = (props) => {
+  const baseURL = process.env.REACT_APP_API_URL
+  // create states to hold username and password
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [newUser, setNewUser] = useState([false]);
-  const [newForm, setNewForm] = useState({
-    username: "",
-    password: ""
-  })
 
-  // handleChange function 
-  const handleChange = (event) => {
-    setNewForm({ ...newForm, [event.target.name]: event.target.value })
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    props.createUser(newForm)
-    setNewForm({
-      username: "",
-      password: ""
+  const submitHandler = async (e) => {
+    e.preventDefault()
+    fetch(baseURL + '/api/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: e.target.username.value,
+        password: e.target.password.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(resJson => {
+      console.log(resJson)
     })
+  };
 
-    // Call the callback function to toggle the heart image
-    props.toggleAddWish();
-  }
 
   return (
+    <>
+    <section className='grid-register'>
+      <div className='grid-welcome'>
+      <h1>Welcome to Yonderway</h1>
+      <p>YonderWay, the path less trod,
+          A journey to the unknown abroad.
+          With open eyes and open heart,
+          The world unfolds, a work of art.
+          Amidst the mountains, fields, and streams,
+          The traveler roams and freely dreams.
+          Of all the wonders yet to see,
+          And all the places yet to be.
+          YonderWay, the call to roam,
+          To leave behind what was once known.
+          And venture forth to find a way,
+          To live a life, untamed and free.</p>
+          <h4>Create an account to continue access</h4>
+      </div>
 
-    <section>
-        <form onSubmit={handleSubmit}>
-      {/* <form action="/register" method="POST"> */}
-        <div className='username-input'>
-          <input
+      <div className='grid-user'>
+      <form onSubmit={submitHandler}>
+        <div>
+          <h1 className='user-pw'>Username</h1><br/>
+          <input className='user-input'
             type="text"
-            value={newForm.username}
+            value={username}
             name="username"
             placeholder="enter username"
-            onChange={handleChange}
+            onChange={(e) => setUsername(e.target.value)}
+            // onChange={handleChange}
           />
         </div>
         <br></br>
-        <div className='password-input'>
-          <input
+        <div>
+        <h1 className='user-pw'>Password</h1><br/>
+          <input className='user-input'
             type="text"
-            value={newForm.password}
+            value={password}
             name="password"
             placeholder="enter password"
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
+            // onChange={handleChange}
           />
         </div>
         <br></br>
-        <input type="submit" value="Register" />
+        <input className="user-pw-bttn" type="submit" value="Register" />
       </form>
+      </div>
     </section>
-
+    </>
   )
 };
 

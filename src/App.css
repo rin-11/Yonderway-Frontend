@@ -2,6 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Permanent+Marker&family=Zeyada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
 
+
+body {
+  background-color: whitesmoke;
+  font-family: 'Dongle', sans-serif;
+  font-size: 25px;
+}
+
 .App {
 text-align: center;
  min-height: 100vh;
@@ -14,12 +21,10 @@ text-align: center;
   width: 100%;
 }
 
-body {
-  background-color: whitesmoke;
-  font-family: 'Dongle', sans-serif;
-  font-size: 25px;
-}
 
+img {
+  max-width: 100%;
+}
 
 h1 {
   color:  #5a5958;
@@ -41,7 +46,7 @@ nav {
   align-items: center;
   margin: 0px;
   margin-bottom: -20px;
-  height: 80px;
+  height: 70px;
 }
 
 
@@ -64,45 +69,30 @@ nav {
 }
 
 
-.img-main {
-  display: inline-block;
-}
-
-img.destination {
-  width: 900px;
-  height: 700px;
-  opacity: 0.;
-  margin: 0.5px;
-  margin-bottom: -14px;
-  border-radius: 10px;
-}
-
-img.destination:hover {
+/* img.destination:hover {
   opacity: 0.8;
-}
+} */
 
 .explore {
   text-align: left;
   font-size: 40px;
-  margin: -30px 0 0 50px;
+  margin: -30px 0 0 20px;
 }
-/* .container {
-  position: relative;
-} */
 
+div.container {
+  position: relative;
+}
 
 .search-bar {
-  position: absolute;
-  top:50%;
-  left: 50%;
+  position: fixed;
+  top: 16%;
+  left: 50%; 
   transform: translate(-50%, -50%);
-  width: 30%;
-  max-width: 600px;
+  width: 500px;
   background-color: white;
   opacity: 0.9;
-  padding: 5px;
-  border-radius: 30px;
-  margin-top: -345px;
+  padding: 3px;
+  border-radius: 10px;
 }
 
 .search-bar input[type="text"] {
@@ -133,6 +123,20 @@ button#user {
   font-size: 15px;
 }
 
+
+
+.img-main {
+  display: inline-block;
+}
+
+img.destination {
+  width: 930px;
+  height: 730px;
+  margin: 0.5px;
+  margin-bottom: -14px;
+  border-radius: 5px;
+}
+
 button#user:hover {
   background-color: black;
   color: azure;
@@ -145,7 +149,7 @@ button {
 
 button#searchbttn{
   width: 15%;
-  padding: 12px;
+  padding: 8px;
   border-radius: 20px;
   cursor: pointer;
 }
@@ -154,7 +158,7 @@ button#searchbttn{
 
 .name {
   font-size: 75px;
-  margin-top: 0px;
+  margin-top: -26px;
   margin-bottom: 0px;
   text-decoration: none;
   font-family: 'Caveat', cursive;
@@ -173,8 +177,8 @@ div.title {
 }
 
 #icon {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
 }
 
 
@@ -244,7 +248,7 @@ a {
 }
 
 #star1 {
-  width: 40px;
+  width: 44px;
   height: 40px;
   margin-top: -25px;
   margin-right: 5px;
@@ -290,10 +294,6 @@ a {
   font-weight: lighter;
 }
 
-.category-show {
-  margin-top: 35px;
-}
-
 section.nav {
   display: flex;
   align-items: center;
@@ -311,23 +311,138 @@ section.nav {
   font-weight: bolder;
 }
 
-section.nav-header{
+/* .nav-header{
   list-style: none;
-  margin-top: 20px;
+  margin-top: 100px;
   padding: 0;
   display: flex;
-  justify-content: center;
-
-}
+  justify-content: space-evenly;
+} */
 
 
 .header-background {
-  background-image: url("https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&w=1600");
   background-size: cover;
-  height: 280px;
+  height: 200px;
   margin-bottom: 50px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px; 
 }
 
-a.category1 {
-  margin-right: 200px;
+.subheading {
+  color: grey;
+  margin-top: -50px;
+  font-size: 35px;
+  margin-bottom: 8px;
+}
+
+
+.cityName {
+  font-size: 70px;
+  margin: -30px 0px 20px 30px;
+  /* font-family: 'Caveat', cursive; */
+  /* font-family: 'Permanent Marker', cursive; */
+  font-family: 'Zeyada', cursive;
+  text-align: left;
+}
+
+
+/* .grid-register {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  border: 1px solid black;
+} */
+
+.grid-register {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  /* width: 60%; */
+  margin-left: 350px;
+  margin-right: 350px;
+  margin-top: -30px;
+  height: 700px;
+  box-shadow:  6px 6px 12px #c7c7c7,
+  -6px -6px 12px #ffffff;
+}
+
+.grid-welcome {
+  background-image: url("https://images.pexels.com/photos/5217882/pexels-photo-5217882.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-size: cover;
+}
+
+.grid-user {
+  width: 100%;
+  background-color: white;
+}
+
+.grid-user:hover {
+  border: 1px solid #5a5958;
+}
+
+.user-pw {
+    font-size: 38px;
+    margin: 0px;
+    height: 20px;
+    text-align: center;
+}
+
+
+.user-input{
+  width: 70%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: whitesmoke;
+  color: black;
+}
+
+.user-pw-bttn {
+  border-radius: 5px;
+  box-shadow: white;
+  background-color: whitesmoke;
+  box-shadow: 3px 3px 10px #c5c5c5;
+  padding: 5px;
+  width: 110px;
+  font-size: 15px;
+}
+
+/* 
+@media (min-width: 50em) {
+  .grid-register {
+    grid-template-areas: 
+      'one one two two';
+  }
+} */
+
+form {
+  margin-top: 150px;
+}
+
+p {
+  text-align: center;
+  line-height: 1;
+  margin: 30px;
+  font-size: 25px;
+}
+
+.popup-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /*on top of other elements */
+}
+
+.popup-box {
+  max-width: 350px;
+  text-align: center;
+  border: solid grey;
+  background-color: white;
 }
