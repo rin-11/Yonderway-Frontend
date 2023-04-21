@@ -7,7 +7,7 @@ const Title = (props) => {
 
   return (
     <>
-    <div>
+    <div className="title">
     <Link to="/">
     <h1 className="name">YONDERWAY</h1>
   </Link> <br/>

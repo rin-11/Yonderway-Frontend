@@ -11,18 +11,18 @@ const Wishlist = (props) => {
    const pageIcons = () => {
     return(
     <>
-    <h3>My Wishlist</h3>
+    <h3>MY WISHLIST</h3>
     <div>
-    <h3> Hotels </h3>
-        <img src="https://static.thenounproject.com/png/1650638-200.png" id="icons"/>
+    <h3 className="category"> Hotels </h3>
+        <img src="https://static.thenounproject.com/png/1650638-200.png" id="icon"/>
     </div>
     <div>
-    <h3> Attractions </h3>
-        <img src="https://static.thenounproject.com/png/4538455-200.png" id="icons" />
+    <h3 className="category"> Attractions </h3>
+        <img src="https://static.thenounproject.com/png/4538455-200.png" id="icon" />
     </div>
     <div>
-    <h3> Restaurants </h3>
-        <img src="https://static.thenounproject.com/png/1062711-200.png" id="icons" />
+    <h3 className="category"> Restaurants </h3>
+        <img src="https://static.thenounproject.com/png/1062711-200.png" id="icon" />
     </div>
     </>
    )}
@@ -48,9 +48,6 @@ const Wishlist = (props) => {
 
     ));
    };
-
-
-
 
 
     return (
