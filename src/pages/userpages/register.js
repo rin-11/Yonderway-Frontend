@@ -30,6 +30,7 @@ const Register = (props) => {
     })
   };
 
+
   return (
   
     <section>
