@@ -1,42 +1,36 @@
 import {useState} from 'react'
 import { Link } from "react-router-dom";
-import Usernav from '../../components/user';
+import api from '../../utils/api';
 import axios from 'axios';
 
 
 //Jess to style 
 
 
-const Login = (props) => {
-  
+  const Login = (props) => {
+  const baseURL = process.env.REACT_APP_API_URL
   // create states to hold username and password
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  // create state for login errors and loading
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
+  
   
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          'Content-type':'application/json'
-          }
-        };
-        setLoading(true) // while request is being made 
-  
-        const { data } = await axios.post('/api/users/login', {
-          username, password
-        }, config );
-        // store user data locally as string
-        localStorage.setItem('userInfo',JSON.stringify(data)); 
-        setLoading(false) // once request is complete
-    } catch (error) {
-      setError(error.response.data.message)
-    }
-    // console.log(username, password) // test
-  };
+    fetch(baseURL + '/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: e.target.username.value,
+        password: e.target.password.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(resJson => {
+      console.log(resJson)
+      })
+    };
+
   
   return (
   
@@ -63,24 +57,24 @@ const Login = (props) => {
       <div className='username-input'>
       <h1 className='user-pw'>Username</h1><br/>
           <input className='user-input'
-            type="text"
-            value={username}
-            name="username"
-            placeholder="enter username"
-            onChange={(e) => setUsername(e.target.value)}
-            // onChange={handleChange}
+           type="text"
+           value={username}
+           name="username"
+           placeholder="enter username"
+           onChange={(e) => setUsername(e.target.value)}
+           // onChange={handleChange}
           />
           </div>
           <br></br>
           <div className='password-input'>
           <h1 className='user-pw'>Password</h1><br/>
           <input className='user-input'
-             type="text"
-             value={password}
-             name="password"
-             placeholder="enter password"
-             onChange={(e) => setPassword(e.target.value)}
-             // onChange={handleChange}
+            type="text"
+            value={password}
+            name="password"
+            placeholder="enter password"
+            onChange={(e) => setPassword(e.target.value)}
+            // onChange={handleChange}
           />
           </div>
           <br></br>
