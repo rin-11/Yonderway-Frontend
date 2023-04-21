@@ -7,30 +7,27 @@ import axios from 'axios';
 //Jess to style 
 
 const Register = (props) => {
+  const baseURL = process.env.REACT_APP_API_URL
   // create states to hold username and password
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  // create state for login errors and loading
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
+
 
   const submitHandler = async (e) => {
-    e.preventDefault();
-    // try/catch to call API
-    try {
-      const config = {
-        headers: {
-          'Content-type': 'application/json',
-        },
-      };
-      setLoading(true);
-      const { data } = await api.post(`${process.env.REACT_APP_API_URL}/api/users/`, {
-        username, password
-      }, config)
-      setLoading(false) // once request is complete
-  } catch (error) {
-    setError(error.response.data.message)
-    }
+    e.preventDefault()
+    fetch(baseURL + '/api/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: e.target.username.value,
+        password: e.target.password.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(resJson => {
+      console.log(resJson)
+    })
   };
 
   return (

@@ -26,10 +26,7 @@ const submitHandler = async (e) => {
   .then(resJson => {
     console.log(resJson)
     })
-  };
-
-
-  
+  }; 
   return (
   
     <section>
