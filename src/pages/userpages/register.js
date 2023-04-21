@@ -1,11 +1,9 @@
 import {useState} from 'react'
 import { Link } from "react-router-dom";
-import Usernav from '../../components/user';
-import axios from 'axios';
 import api from '../../utils/api';
+import axios from 'axios';
 
 //Jess to style 
-
 
 const Register = (props) => {
   // create states to hold username and password
@@ -25,11 +23,9 @@ const Register = (props) => {
         },
       };
       setLoading(true);
-      const { data } = await api.post('/api/users', {
+      const { data } = await api.post(`${process.env.REACT_APP_API_URL}/api/users/`, {
         username, password
       }, config)
-      // store user data locally as string
-      localStorage.setItem('userInfo',JSON.stringify(data)); 
       setLoading(false) // once request is complete
   } catch (error) {
     setError(error.response.data.message)
@@ -37,30 +33,13 @@ const Register = (props) => {
   };
 
   return (
-    <>
-    <section className='grid-register'>
-      <div className='grid-welcome'>
-      <h1>Welcome to Yonderway</h1>
-      <p>YonderWay, the path less trod,
-          A journey to the unknown abroad.
-          With open eyes and open heart,
-          The world unfolds, a work of art.
-          Amidst the mountains, fields, and streams,
-          The traveler roams and freely dreams.
-          Of all the wonders yet to see,
-          And all the places yet to be.
-          YonderWay, the call to roam,
-          To leave behind what was once known.
-          And venture forth to find a way,
-          To live a life, untamed and free.</p>
-          <h4>Create an account to continue access</h4>
-      </div>
-
-      <div className='grid-user'>
+  
+    <section>
+      <h1>Register New User</h1>
       <form onSubmit={submitHandler}>
-        <div>
-          <h1 className='user-pw'>Username</h1><br/>
-          <input className='user-input'
+      <div className='username-input'>
+        <h4>Username:</h4>
+          <input
             type="text"
             value={username}
             name="username"
@@ -68,11 +47,11 @@ const Register = (props) => {
             onChange={(e) => setUsername(e.target.value)}
             // onChange={handleChange}
           />
-        </div>
-        <br></br>
-        <div>
-        <h1 className='user-pw'>Password</h1><br/>
-          <input className='user-input'
+          </div>
+          <br></br>
+          <div className='password-input'>
+          <h4>Password:</h4>
+          <input
             type="text"
             value={password}
             name="password"
@@ -80,14 +59,12 @@ const Register = (props) => {
             onChange={(e) => setPassword(e.target.value)}
             // onChange={handleChange}
           />
-        </div>
-        <br></br>
-        <input className="user-pw-bttn" type="submit" value="Register" />
-      </form>
-      </div>
-    </section>
-    </>
-  )
-};
+          </div>
+          <br></br>
+          <input type="submit" value="Register" />
+          </form>
+      </section>
+      
+)};
 
 export default Register;
