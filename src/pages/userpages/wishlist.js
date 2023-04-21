@@ -1,17 +1,21 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import api from '../../utils/api';
+import axios from 'axios';
 // load user wishlist if user found
 // else render register page
 // JESS working on the layout 
 
 
 const Wishlist = (props) => {
+    const { name } = useParams();
    
+
+
    const pageIcons = () => {
     return(
     <>
-    <h3>MY WISHLIST</h3>
+    <h3>{name}'s Wishlist</h3>
     <div>
     <h3 className="category"> Hotels </h3>
         <img src="https://static.thenounproject.com/png/1650638-200.png" id="icon"/>
