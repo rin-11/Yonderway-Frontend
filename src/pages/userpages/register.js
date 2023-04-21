@@ -2,16 +2,12 @@ import {useState} from 'react'
 import { Link } from "react-router-dom";
 import api from '../../utils/api';
 import axios from 'axios';
-
-//Jess to style 
-
+//Jess to style
 const Register = (props) => {
   const baseURL = process.env.REACT_APP_API_URL
   // create states to hold username and password
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
-
   const submitHandler = async (e) => {
     e.preventDefault()
     fetch(baseURL + '/api/users', {
@@ -28,9 +24,7 @@ const Register = (props) => {
       console.log(resJson)
     })
   };
-
   return (
-  
     <section>
       <h1>Register New User</h1>
       <form onSubmit={submitHandler}>
@@ -61,7 +55,5 @@ const Register = (props) => {
           <input type="submit" value="Register" />
           </form>
       </section>
-      
 )};
-
 export default Register;
