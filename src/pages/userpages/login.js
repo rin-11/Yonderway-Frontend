@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import api from '../../utils/api';
 import axios from 'axios';
 
-
-//Jess to style 
-
-
   const Login = (props) => {
   const baseURL = process.env.REACT_APP_API_URL
   // create states to hold username and password
@@ -29,7 +25,8 @@ import axios from 'axios';
     .then(resJson => {
       console.log(resJson)
       localStorage.setItem('userInfo',JSON.stringify(resJson)); 
-      })
+      window.history.back();  
+    })
     };
 
   return (
