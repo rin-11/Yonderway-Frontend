@@ -10,8 +10,6 @@ import axios from 'axios';
 const Wishlist = (props) => {
     const { name } = useParams();
    
-
-
    const pageIcons = () => {
     return(
     <>
