@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import api from '../utils/api';
 import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
 
 // Define the City functional component
 const City = (props) => {
@@ -24,24 +25,26 @@ const City = (props) => {
   }, [cityId]);
 
   // Define an async function to fetch hotel data for a specific city
-  const fetchHotels = async (city) => {
+  async function fetchHotels(city) {
     try {
-      const response = await api.get(`/hotel/${city}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/hotels/${city}`);
       setHotels(response.data.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching hotels:", error);
     }
-  };
-
-  // Define an async function to fetch restaurant data for a specific city
-  const fetchRestaurants = async (city) => {
+  }
+  
+  async function fetchRestaurants(city) {
     try {
-      const response = await api.get(`/restaurant/${city}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants/${city}`);
+      console.log("Fetched restaurants data:", response.data); // Add this line for debugging
       setRestaurants(response.data.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching restaurants:", error);
     }
-  };
+  }
+  
+  
 
   // Define an async function to fetch attraction data for a specific city
   const fetchAttractions = async (city) => {
@@ -110,6 +113,7 @@ const City = (props) => {
       //   <Link to='/register'>
       //   <button>Register</button>
       //   </Link>
+    
       //   <Link to='/login'>
       //   <button>Login</button>
       //   </Link>
@@ -180,57 +184,45 @@ const City = (props) => {
       </div>
     ));
   };
-
-  // Render restaurants as JSX elements
   const renderRestaurants = () => {
     return restaurants.map((restaurant, index) => (
-      <div className='activity_container' key={index}>
-        {/* <button className='add-wish' onClick={() => toggleRestaurantWish(index)}>
-        <img
-            src={
-              restaurant.isWished
-                ? 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png'
-                : 'https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png'
-            }
-            id='star1'
-            alt='Add to wishlist'
+      <div className="activity_container" key={index}>
+        <button className="add-wish" onClick={handleOpen}>
+          <img
+            src="https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png"
+            id="star1"
           />
-        </button> */}
-
-
-      <button className='add-wish' onClick={handleOpen}>
-        <img src='https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png' id="star1"/>
         </button>
         <div>
-         {showPopUp && (
-          <div className='popup-container'>
-          <div className='popup-box'>
-          <h1>Register or Login to continue </h1>
-          <Link to='/register'>
-          <button>Register</button>
-          </Link>
-          <Link to='/login'>
-          <button>Login</button>
-          </Link>
-          <button className="popup-close" onClick={handleCloseBttn}>Close</button>
-          </div>
-          </div>
-        ) }
-        </div>   
-
-        {restaurant.photo ? (
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" className='activities' />
-        ) : null}
-        <div>
-          <h2 className='act-name'>{restaurant.name}</h2>
-          <div className='rating'>
-            <img src='https://cdn-icons-png.flaticon.com/512/56/56786.png' id='star'></img> <h3 className='rating-num'> {restaurant.rating}</h3>
-          </div>
+          {showPopUp && (
+            <div className="popup-container">
+              <div className="popup-box">
+                <h1>Register or Login to continue </h1>
+                <Link to="/register">
+                  <button>Register</button>
+                </Link>
+                <Link to="/login">
+                  <button>Login</button>
+                </Link>
+                <button className="popup-close" onClick={handleCloseBttn}>
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-        <p className='address'>Address: {restaurant.description}</p>
+        <img
+          src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+          alt={restaurant.name}
+          className="restaurant-image"
+        />
+        <h4>{restaurant.name}</h4>
+        <p>Rating: {restaurant.rating}</p>
+        <p>{restaurant.description}</p>
       </div>
     ));
   };
+  
 
   // Render attractions as JSX elements
   const renderAttractions = () => {
