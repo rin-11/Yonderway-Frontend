@@ -10,7 +10,7 @@ import axios from 'axios';
   const Login = (props) => {
   const baseURL = process.env.REACT_APP_API_URL
   // create states to hold username and password
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   
   
@@ -19,7 +19,7 @@ import axios from 'axios';
     fetch(baseURL + '/api/users/login', {
       method: 'POST',
       body: JSON.stringify({
-        username: e.target.username.value,
+        email: e.target.email.value,
         password: e.target.password.value
       }),
       headers: {
@@ -31,7 +31,6 @@ import axios from 'axios';
       })
     };
 
-  
   return (
   
     <section className='grid-register'>
@@ -54,14 +53,14 @@ import axios from 'axios';
 
       <div className='grid-user'>
       <form onSubmit={submitHandler}>
-      <div className='username-input'>
-      <h1 className='user-pw'>Username</h1><br/>
+      <div className='email-input'>
+      <h1 className='user-pw'>Email</h1><br/>
           <input className='user-input'
            type="text"
-           value={username}
-           name="username"
-           placeholder="enter username"
-           onChange={(e) => setUsername(e.target.value)}
+           value={email}
+           name="email"
+           placeholder="Enter Email"
+           onChange={(e) => setEmail(e.target.value)}
            // onChange={handleChange}
           />
           </div>
@@ -72,7 +71,7 @@ import axios from 'axios';
             type="text"
             value={password}
             name="password"
-            placeholder="enter password"
+            placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
             // onChange={handleChange}
           />

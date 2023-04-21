@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import api from '../../utils/api';
 import axios from 'axios';
 
+
 //Jess to style 
 
 const Register = (props) => {
   const baseURL = process.env.REACT_APP_API_URL
   // create states to hold username and password
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
 
@@ -18,6 +20,7 @@ const Register = (props) => {
       method: 'POST',
       body: JSON.stringify({
         username: e.target.username.value,
+        email: e.target.email.value,
         password: e.target.password.value
       }),
       headers: {
@@ -51,6 +54,7 @@ const Register = (props) => {
       </div>
 
       <div className='grid-user'>
+        
       <form onSubmit={submitHandler}>
         <div>
           <h1 className='user-pw'>Username</h1><br/>
@@ -58,8 +62,20 @@ const Register = (props) => {
             type="text"
             value={username}
             name="username"
-            placeholder="enter username"
+            placeholder="Enter Display Name"
             onChange={(e) => setUsername(e.target.value)}
+            // onChange={handleChange}
+          />
+        </div>
+        <br></br>
+        <div>
+          <h1 className='user-pw'>Email</h1><br/>
+          <input className='user-input'
+            type="text"
+            value={email}
+            name="email"
+            placeholder="Enter Email"
+            onChange={(e) => setEmail(e.target.value)}
             // onChange={handleChange}
           />
         </div>
@@ -70,7 +86,7 @@ const Register = (props) => {
             type="text"
             value={password}
             name="password"
-            placeholder="enter password"
+            placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
             // onChange={handleChange}
           />
