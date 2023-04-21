@@ -2,52 +2,73 @@ import {useState} from 'react'
 import { Link } from "react-router-dom";
 import api from '../../utils/api';
 import axios from 'axios';
+
+
 //Jess to style 
 
-const Login = (props) => {
-const baseURL = process.env.REACT_APP_API_URL
-// create states to hold username and password
-const [username, setUsername] = useState('')
-const [password, setPassword] = useState('')
 
+  const Login = (props) => {
+  const baseURL = process.env.REACT_APP_API_URL
+  // create states to hold username and password
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  
+  
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    fetch(baseURL + '/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: e.target.username.value,
+        password: e.target.password.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(resJson => {
+      console.log(resJson)
+      })
+    };
 
-const submitHandler = async (e) => {
-  e.preventDefault();
-  fetch(baseURL + '/api/users/login', {
-    method: 'POST',
-    body: JSON.stringify({
-      username: e.target.username.value,
-      password: e.target.password.value
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then(res => res.json())
-  .then(resJson => {
-    console.log(resJson)
-    })
-  };
   
   return (
   
-    <section>
-      <h1>User Sign In</h1>
+    <section className='grid-register'>
+      <div className='grid-welcome'>
+      <h1>Hello Again!</h1>
+      <p>YonderWay, the path less trod,
+          A journey to the unknown abroad.
+          With open eyes and open heart,
+          The world unfolds, a work of art.
+          Amidst the mountains, fields, and streams,
+          The traveler roams and freely dreams.
+          Of all the wonders yet to see,
+          And all the places yet to be.
+          YonderWay, the call to roam,
+          To leave behind what was once known.
+          And venture forth to find a way,
+          To live a life, untamed and free.</p>
+          <h4>Sign in to continue access</h4>
+      </div>
+
+      <div className='grid-user'>
       <form onSubmit={submitHandler}>
       <div className='username-input'>
-        <h4>Username:</h4>
-          <input
-            type="text"
-            value={username}
-            name="username"
-            placeholder="enter username"
-            onChange={(e) => setUsername(e.target.value)}
-            // onChange={handleChange}
+      <h1 className='user-pw'>Username</h1><br/>
+          <input className='user-input'
+           type="text"
+           value={username}
+           name="username"
+           placeholder="enter username"
+           onChange={(e) => setUsername(e.target.value)}
+           // onChange={handleChange}
           />
           </div>
           <br></br>
           <div className='password-input'>
-          <h4>Password:</h4>
-          <input
+          <h1 className='user-pw'>Password</h1><br/>
+          <input className='user-input'
             type="text"
             value={password}
             name="password"
@@ -57,10 +78,10 @@ const submitHandler = async (e) => {
           />
           </div>
           <br></br>
-          <input type="submit" value="Login" />
+          <input className="user-pw-bttn" type="submit" value="Login" />
           </form>
-      </section>
-      
+      </div>
+      </section> 
       
 )}
 
