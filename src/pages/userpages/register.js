@@ -16,7 +16,7 @@ const Register = (props) => {
 
   const submitHandler = async (e) => {
     e.preventDefault()
-    fetch(baseURL + '/api/users', {
+    fetch(baseURL + '/user/register', {
       method: 'POST',
       body: JSON.stringify({
         username: e.target.username.value,
