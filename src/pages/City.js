@@ -86,10 +86,7 @@ const City = (props) => {
     setAttractions(newAttractions);
   };
 
-
-//////////////////////////////////////////////////////////////////////
-
-   //POP-UP Notification
+  //POP-UP Notification
        const [showPopUp, setShowPopUp] = useState(true);
        //hide message
        const handleCloseBttn = () => {
@@ -100,31 +97,8 @@ const City = (props) => {
        const handleOpen = () => {
          setShowPopUp(true)
        }
-    
-
-    //Show when heart is clicked 
-
-      //  <button onClick={handleOpen}>SHOW</button>
-      //   <div>
-      //   {showPopUp && (
-      //   <div className='popup-container'>
-      //   <div className='popup-box'>
-      //   <h1>Register or Login to continue </h1>
-      //   <Link to='/register'>
-      //   <button>Register</button>
-      //   </Link>
-    
-      //   <Link to='/login'>
-      //   <button>Login</button>
-      //   </Link>
-      //   <button className="popup-close" onClick={handleCloseBttn}>Close</button>
-      //   </div>
-      //   </div>
-      //   ) }
-      //   </div>
 
 
-////////////////////////////////////////////////////////////////////////
 
 
   // Render hotels as JSX elements
@@ -157,14 +131,16 @@ const City = (props) => {
          {showPopUp && (
           <div className='popup-container'>
           <div className='popup-box'>
-          <h1>Register or Login to continue </h1>
+          <h5 className='popup-h1'>Welcome to Yonderway</h5>
+          <h1 className='popup-header'> Register or Login to access your wishlist</h1>
           <Link to='/register'>
-          <button>Register</button>
+          <button className='pop-bttn'>Sign up</button>
           </Link>
           <Link to='/login'>
-          <button>Login</button>
+          <button className='pop-bttn'>Login</button>
           </Link>
-          <button className="popup-close" onClick={handleCloseBttn}>Close</button>
+          <button className="popup-close" onClick={handleCloseBttn}>X</button>
+          <h5>Sign up, it's free!</h5>
           </div>
           </div>
         ) }
@@ -184,45 +160,64 @@ const City = (props) => {
       </div>
     ));
   };
+  
+
+  // Render restaurants as JSX elements
   const renderRestaurants = () => {
     return restaurants.map((restaurant, index) => (
-      <div className="activity_container" key={index}>
-        <button className="add-wish" onClick={handleOpen}>
-          <img
-            src="https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png"
-            id="star1"
+      <div className='activity_container' key={index}>
+        {/* <button className='add-wish' onClick={() => toggleRestaurantWish(index)}>
+        <img
+            src={
+              restaurant.isWished
+                ? 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png'
+                : 'https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png'
+            }
+            id='star1'
+            alt='Add to wishlist'
           />
+        </button> */}
+
+
+      <button className='add-wish' onClick={handleOpen}>
+        <img src='https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png' id="star1"/>
         </button>
         <div>
-          {showPopUp && (
-            <div className="popup-container">
-              <div className="popup-box">
-                <h1>Register or Login to continue </h1>
-                <Link to="/register">
-                  <button>Register</button>
-                </Link>
-                <Link to="/login">
-                  <button>Login</button>
-                </Link>
-                <button className="popup-close" onClick={handleCloseBttn}>
-                  Close
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+         {showPopUp && (
+          <div className='popup-container'>
+          <div className='popup-box'>
+          <h5 className='popup-h1'>Welcome to Yonderway</h5>
+          <h1 className='popup-header'> Register or Login to access your wishlist</h1>
+          <Link to='/register'>
+          <button className='pop-bttn'>Sign up</button>
+          </Link>
+          <Link to='/login'>
+          <button className='pop-bttn'>Login</button>
+          </Link>
+          <button className="popup-close" onClick={handleCloseBttn}>X</button>
+          <h5>Sign up, it's free!</h5>
+          </div>
+          </div>
+        ) }
+        </div>   
+
+{/* ///////////// */}
+     
         <img
           src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`}
-          alt={restaurant.name}
-          className="restaurant-image"
-        />
-        <h4>{restaurant.name}</h4>
-        <p>Rating: {restaurant.rating}</p>
-        <p>{restaurant.description}</p>
+          alt={restaurant.name} className='activities' />
+        <div>
+          <h2 className='act-name'>{restaurant.name}</h2>
+          <div className='rating'>
+            <img src='https://cdn-icons-png.flaticon.com/512/56/56786.png' id='star'></img> <h3 className='rating-num'> {restaurant.rating}</h3>
+          </div>
+        </div>
+        <p className='address'>Address: {restaurant.description}</p>
       </div>
     ));
   };
-  
+
+
 
   // Render attractions as JSX elements
   const renderAttractions = () => {
@@ -247,14 +242,16 @@ const City = (props) => {
           {showPopUp && (
           <div className='popup-container'>
           <div className='popup-box'>
-          <h1>Register or Login to continue </h1>
+          <h5 className='popup-h1'>Welcome to Yonderway</h5>
+          <h1 className='popup-header'> Register or Login to access your wishlist</h1>
           <Link to='/register'>
-          <button>Register</button>
+          <button className='pop-bttn'>Sign up</button>
           </Link>
           <Link to='/login'>
-          <button>Login</button>
+          <button className='pop-bttn'>Login</button>
           </Link>
-          <button className="popup-close" onClick={handleCloseBttn}>Close</button>
+          <button className="popup-close" onClick={handleCloseBttn}>X</button>
+          <h5>Sign up, it's free!</h5>
           </div>
           </div>
         ) }
