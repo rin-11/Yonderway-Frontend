@@ -23,7 +23,7 @@ const Usernav = (props) => {
         </Link>
 
         <Link to='/'>
-            <button onClick={() => {
+            <button id="user" onClick={() => {
               localStorage.removeItem('userInfo')
             }}>
             <img src="https://cdn-icons-png.flaticon.com/512/154/154347.png"  id="icon2"></img>

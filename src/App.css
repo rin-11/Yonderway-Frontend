@@ -443,6 +443,45 @@ p {
 .popup-box {
   max-width: 350px;
   text-align: center;
-  border: solid grey;
+  border: 1px solid grey;
   background-color: white;
+  padding: 20px;
+}
+
+.popup-close {
+  padding: 5px;
+  background-color: black;
+  border: 1px solid grey;
+  border-radius: 1px;
+  color: white;
+  margin-left: 10px;
+  box-shadow: 3px 3px 10px #c5c5c5;
+}
+
+.pop-bttn{
+  border-radius: 5px;
+  box-shadow: white;
+  background-color: whitesmoke;
+  box-shadow: 3px 3px 10px #c5c5c5;
+  padding: 5px;
+  width: 80px;
+  font-size: 15px;
+  border: none;
+}
+
+.pop-bttn:hover {
+  background-color: black;
+  color:white;  
+}
+
+.popup-header {
+  font-size: 28px;
+  font-weight: lighter;
+  margin-bottom: 25px;
+}
+
+.popup-h1 {
+  font-size: 30px;
+  margin-bottom: 25px;
+  margin-top: 15px;
 }
