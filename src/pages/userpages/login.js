@@ -12,7 +12,7 @@ import axios from 'axios';
   
   const submitHandler = async (e) => {
     e.preventDefault();
-    fetch(baseURL + '/api/users/login', {
+    fetch(baseURL + '/user/login', {
       method: 'POST',
       body: JSON.stringify({
         email: e.target.email.value,

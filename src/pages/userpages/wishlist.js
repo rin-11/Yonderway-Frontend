@@ -1,5 +1,6 @@
-import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+
 import api from '../../utils/api';
 import axios from 'axios';
 // load user wishlist if user found
@@ -8,12 +9,10 @@ import axios from 'axios';
 
 
 const Wishlist = (props) => {
-    const { name } = useParams();
-   
-   const pageIcons = () => {
+
+    const pageIcons = () => {
     return(
     <>
-    <h3>{name}'s Wishlist</h3>
     <div>
     <h3 className="category"> Hotels </h3>
         <img src="https://static.thenounproject.com/png/1650638-200.png" id="icon"/>
@@ -29,27 +28,35 @@ const Wishlist = (props) => {
     </>
    )}
 
-   //State to hold the data
-   const [restaurants, setRestaurants] = useState('');
-   const [attractions, setAttractions] = useState('');
-   const [hotels, setHotels] = useState('');
+   const baseURL = process.env.REACT_APP_API_URL
+   const [wishlistData, setWishlistData] = useState([]);
 
-   //call API 
+   const { wishlistId } = useParams();
 
+   useEffect(() => {
+    fetchWishlistData(wishlistId)
+  }, [wishlistId]);
    //function once we get the data
-   const showhotels = () => {
+   const fetchWishlistData = async (wishlistId) => {
+    try {
+      const response = await api.get(`/wishlist/${wishlistId}`);
+      setWishlistData(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
     //ADD LOGIC, Conditional statements? 
 
-    return hotels.map((hotels) => (
+    return wishlistData.map((wishlistData) => (
         <div>
-            <h1>{hotels.photo}</h1>
-            <h1>{hotels.name}</h1>
+            <h1>{wishlistData.hotels}</h1>
+            <h1>{wishlistData.restaurants}</h1>
         </div>
    
 
     ));
-   };
+
 
 
     return (
