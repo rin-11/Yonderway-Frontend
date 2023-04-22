@@ -87,7 +87,7 @@ const City = (props) => {
   };
 
   //POP-UP Notification
-       const [showPopUp, setShowPopUp] = useState(true);
+       const [showPopUp, setShowPopUp] = useState(false);
        //hide message
        const handleCloseBttn = () => {
            setShowPopUp(false);
@@ -112,7 +112,7 @@ const City = (props) => {
         */}
 
         {/* will need this function once user signs in */}
-        {/* <button className='add-wish' onClick={() => toggleHotelWish(index)}>
+        <button className='add-wish' onClick={() => toggleHotelWish(index)}>
         <img
             src={
               hotel.isWished
@@ -122,30 +122,7 @@ const City = (props) => {
             id='star1'
             alt='Add to wishlist'
           />
-        </button> */}
-
-        <button className='add-wish' onClick={handleOpen}>
-        <img src='https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png' id="star1"/>
         </button>
-        <div>
-         {showPopUp && (
-          <div className='popup-container'>
-          <div className='popup-box'>
-          <h5 className='popup-h1'>Welcome to Yonderway</h5>
-          <h1 className='popup-header'> Register or Login to access your wishlist</h1>
-          <Link to='/register'>
-          <button className='pop-bttn'>Sign up</button>
-          </Link>
-          <Link to='/login'>
-          <button className='pop-bttn'>Login</button>
-          </Link>
-          <button className="popup-close" onClick={handleCloseBttn}>X</button>
-          <h5>Sign up, it's free!</h5>
-          </div>
-          </div>
-        ) }
-        </div>   
-
 
         {hotel.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${hotel.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Hotel" className='activities' />
@@ -166,7 +143,7 @@ const City = (props) => {
   const renderRestaurants = () => {
     return restaurants.map((restaurant, index) => (
       <div className='activity_container' key={index}>
-        {/* <button className='add-wish' onClick={() => toggleRestaurantWish(index)}>
+        <button className='add-wish' onClick={() => toggleRestaurantWish(index)}>
         <img
             src={
               restaurant.isWished
@@ -176,30 +153,7 @@ const City = (props) => {
             id='star1'
             alt='Add to wishlist'
           />
-        </button> */}
-
-
-      <button className='add-wish' onClick={handleOpen}>
-        <img src='https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png' id="star1"/>
         </button>
-        <div>
-         {showPopUp && (
-          <div className='popup-container'>
-          <div className='popup-box'>
-          <h5 className='popup-h1'>Welcome to Yonderway</h5>
-          <h1 className='popup-header'> Register or Login to access your wishlist</h1>
-          <Link to='/register'>
-          <button className='pop-bttn'>Sign up</button>
-          </Link>
-          <Link to='/login'>
-          <button className='pop-bttn'>Login</button>
-          </Link>
-          <button className="popup-close" onClick={handleCloseBttn}>X</button>
-          <h5>Sign up, it's free!</h5>
-          </div>
-          </div>
-        ) }
-        </div>   
 
 {/* ///////////// */}
      
@@ -223,7 +177,7 @@ const City = (props) => {
   const renderAttractions = () => {
     return attractions.map((attraction, index) => (
       <div className='activity_container' key={index}>
-        {/* <button className='add-wish' onClick={() => toggleAttractionWish(index)} >
+        <button className='add-wish' onClick={() => toggleAttractionWish(index)} >
         <img
             src={
               attraction.isWished
@@ -233,29 +187,7 @@ const City = (props) => {
             id='star1'
             alt='Add to wishlist'
           />
-        </button> */}
-
-      <button className='add-wish' onClick={handleOpen}>
-        <img src='https://static.wixstatic.com/media/4c3267_5c08fc6b68d041418784f2f223d5cf30~mv2.png' id="star1"/>
         </button>
-          <div>
-          {showPopUp && (
-          <div className='popup-container'>
-          <div className='popup-box'>
-          <h5 className='popup-h1'>Welcome to Yonderway</h5>
-          <h1 className='popup-header'> Register or Login to access your wishlist</h1>
-          <Link to='/register'>
-          <button className='pop-bttn'>Sign up</button>
-          </Link>
-          <Link to='/login'>
-          <button className='pop-bttn'>Login</button>
-          </Link>
-          <button className="popup-close" onClick={handleCloseBttn}>X</button>
-          <h5>Sign up, it's free!</h5>
-          </div>
-          </div>
-        ) }
-        </div>   
 
         {attraction.photo ? (
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Attraction" className='activities' />

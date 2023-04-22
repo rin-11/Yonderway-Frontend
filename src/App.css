@@ -152,6 +152,7 @@ button#searchbttn{
   padding: 8px;
   border-radius: 20px;
   cursor: pointer;
+  background-color: #c4c4c4;
 }
 
 
@@ -347,12 +348,6 @@ section.nav {
 }
 
 
-/* .grid-register {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  border: 1px solid black;
-} */
 
 .grid-register {
   display: grid;
@@ -409,13 +404,6 @@ section.nav {
   font-size: 15px;
 }
 
-/* 
-@media (min-width: 50em) {
-  .grid-register {
-    grid-template-areas: 
-      'one one two two';
-  }
-} */
 
 form {
   margin-top: 150px;
@@ -430,7 +418,7 @@ p {
 
 .popup-container{
   position: fixed;
-  top: 0;
+  top: 100px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -440,12 +428,17 @@ p {
   z-index: 9999; /*on top of other elements */
 }
 
+
 .popup-box {
   max-width: 350px;
   text-align: center;
-  border: 1px solid grey;
-  background-color: white;
-  padding: 20px;
+  border: none;
+  padding: 8px;
+  background-image: url("https://images.pexels.com/photos/2007395/pexels-photo-2007395.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-size: cover;
+  z-index: 9999;
+  color: white;
+  border-radius: 2px;
 }
 
 .popup-close {
@@ -454,19 +447,20 @@ p {
   border: 1px solid grey;
   border-radius: 1px;
   color: white;
-  margin-left: 10px;
+  margin-left: 5px;
   box-shadow: 3px 3px 10px #c5c5c5;
 }
+
 
 .pop-bttn{
   border-radius: 5px;
   box-shadow: white;
-  background-color: whitesmoke;
+  background-color: white;
   box-shadow: 3px 3px 10px #c5c5c5;
   padding: 5px;
   width: 80px;
   font-size: 15px;
-  border: none;
+  border: 1px solid grey;
 }
 
 .pop-bttn:hover {
@@ -478,10 +472,24 @@ p {
   font-size: 28px;
   font-weight: lighter;
   margin-bottom: 25px;
+  width: 300px;
+  color: white;
+  line-height: 0.7;
 }
 
 .popup-h1 {
   font-size: 30px;
   margin-bottom: 25px;
   margin-top: 15px;
+}
+
+#popUp-bttn {
+ border-radius: 2px;
+ border: none;
+ position: fixed;
+ top: 146px;
+ right: 750px;
+ padding: 1px; 
+ background: transparent;
+ color: #c4c4c4
 }
