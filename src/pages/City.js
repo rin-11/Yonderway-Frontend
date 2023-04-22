@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import api from '../utils/api';
 import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
 
 // Define the City functional component
 const City = (props) => {
@@ -24,24 +25,26 @@ const City = (props) => {
   }, [cityId]);
 
   // Define an async function to fetch hotel data for a specific city
-  const fetchHotels = async (city) => {
+  async function fetchHotels(city) {
     try {
-      const response = await api.get(`/hotel/${city}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/hotels/${city}`);
       setHotels(response.data.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching hotels:", error);
     }
-  };
-
-  // Define an async function to fetch restaurant data for a specific city
-  const fetchRestaurants = async (city) => {
+  }
+  
+  async function fetchRestaurants(city) {
     try {
-      const response = await api.get(`/restaurant/${city}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants/${city}`);
+      console.log("Fetched restaurants data:", response.data); // Add this line for debugging
       setRestaurants(response.data.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching restaurants:", error);
     }
-  };
+  }
+  
+  
 
   // Define an async function to fetch attraction data for a specific city
   const fetchAttractions = async (city) => {
@@ -94,6 +97,8 @@ const City = (props) => {
        const handleOpen = () => {
          setShowPopUp(true)
        }
+
+
 
 
   // Render hotels as JSX elements
@@ -155,6 +160,7 @@ const City = (props) => {
       </div>
     ));
   };
+  
 
   // Render restaurants as JSX elements
   const renderRestaurants = () => {
@@ -195,9 +201,11 @@ const City = (props) => {
         ) }
         </div>   
 
-        {restaurant.photo ? (
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`} alt="Restaurant" className='activities' />
-        ) : null}
+{/* ///////////// */}
+     
+        <img
+          src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photo}&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+          alt={restaurant.name} className='activities' />
         <div>
           <h2 className='act-name'>{restaurant.name}</h2>
           <div className='rating'>
@@ -208,6 +216,8 @@ const City = (props) => {
       </div>
     ));
   };
+
+
 
   // Render attractions as JSX elements
   const renderAttractions = () => {
