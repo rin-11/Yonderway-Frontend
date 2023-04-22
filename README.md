@@ -9,7 +9,7 @@
 > Unsolved problems: connecting server-side API data to frontend, having all images render, show/hide for areas of interest, CRUD for users and areas of interest on frontend<br />
 
 ## Wireframes
-> <img width="1080" alt="Screenshot 2023-04-21 at 7 56 17 PM" src="https://user-images.githubusercontent.com/119901745/233786950-ec4a65d8-b46f-44fa-bd4a-e89e473b1572.png"><br />
+> ![yonderway wireframe](https://user-images.githubusercontent.com/119901745/233787283-3868945a-1321-4a9d-bc1e-41c883cf03b7.jpeg)<br />
 
 ## User Stories
 >
