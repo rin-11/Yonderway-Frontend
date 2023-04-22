@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import api from '../../utils/api';
 import { useParams, Link } from 'react-router-dom';
 
 import api from '../../utils/api';
@@ -35,13 +34,13 @@ const Wishlist = (props) => {
    const { wishlistId } = useParams();
 
    useEffect(() => {
-    fetchWishlist(wishlistId)
+    fetchWishlistData(wishlistId)
   }, [wishlistId]);
    //function once we get the data
    const fetchWishlistData = async (wishlistId) => {
     try {
       const response = await api.get(`/wishlist/${wishlistId}`);
-      setWishlistDat(response.data.data);
+      setWishlistData(response.data.data);
     } catch (error) {
       console.error(error);
     }
@@ -51,13 +50,13 @@ const Wishlist = (props) => {
 
     return wishlistData.map((wishlistData) => (
         <div>
-            <h1>{hotels}</h1>
-            <h1>{restaurants}</h1>
+            <h1>{wishlistData.hotels}</h1>
+            <h1>{wishlistData.restaurants}</h1>
         </div>
    
 
     ));
-   };
+
 
 
     return (
@@ -69,7 +68,7 @@ const Wishlist = (props) => {
 
 
 
-)
+)}
 
 export default Wishlist;
 
