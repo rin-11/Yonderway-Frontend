@@ -32,6 +32,25 @@ const Main = (props) => {
     setSearchQuery(event.target.value);
   };
 
+
+
+//POP-UP Notification
+    const [showPopUp, setShowPopUp] = useState(false);
+  //hide message
+    const handleCloseBttn = () => {
+          setShowPopUp(false);
+          //navigate to the link
+          // Link component from react-router-dom to navigate to the city page with the searchQuery as a URL parameter 
+          window.location.href = `/city/${searchQuery}`;
+      };
+  
+  //show message 
+      const handleOpen = () => {
+        setShowPopUp(true)
+      }
+  
+
+      
   // Function to render destination images
   const renderDestinations = () => {
     // Map through the destinations array and return an image element for each destination
@@ -49,7 +68,25 @@ const Main = (props) => {
         {/* Input field for entering the destination city */}
         <input type="text" placeholder="Enter your destination by City" value={searchQuery} onChange={handleInputChange} />
         {/* Link component from react-router-dom to navigate to the city page with the searchQuery as a URL parameter */}
-        <Link to={`/city/${searchQuery}`}><button id="searchbttn">SEARCH</button></Link>
+        <button id="searchbttn" onClick={handleOpen}>SEARCH</button>
+            {showPopUp && (
+            <div className='popup-container'>
+             
+            <div className='popup-box'>
+            <h5 className='popup-h1'>Welcome to Yonderway!</h5>
+            <h1 className='popup-header'> Register or Login to access <br/> your wishlist</h1>
+            <Link to='/register'>
+            <button className='pop-bttn'>Sign up</button>
+            </Link>
+            <Link to='/login'>
+            <button className='pop-bttn'>Login</button>
+            </Link>
+            <button className="popup-close" onClick={handleCloseBttn}>X</button>
+            <h5>Sign up, it's free!</h5>
+            </div>
+            </div>
+
+          ) }
       </div>
       {/* Render destination images only if the destinations array has data */}
       {destinations.length > 0 ? renderDestinations() : null}
