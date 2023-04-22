@@ -9,8 +9,7 @@
 > Unsolved problems: connecting server-side API data to frontend, having all images render, show/hide for areas of interest, CRUD for users and areas of interest on frontend<br />
 
 ## Wireframes
-> Wireframes with basic page layouts<br />
-> Copy and paste or drag and drop your images here.
+> <img width="1080" alt="Screenshot 2023-04-21 at 7 56 17 PM" src="https://user-images.githubusercontent.com/119901745/233786950-ec4a65d8-b46f-44fa-bd4a-e89e473b1572.png"><br />
 
 ## User Stories
 >
